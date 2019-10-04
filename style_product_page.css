@@ -1,0 +1,88 @@
+#nom_prod
+{
+	color: red;
+	font-size: 40px;
+}
+
+#prix_prod
+{
+	color:red;
+	font-size: 25px;
+	
+}
+
+#desc_prod
+{
+	text-align: justify;
+	font-style:  italic;
+		
+}
+
+.titre_desc
+{
+	font-weight: bolder;
+}
+
+.information
+{
+	display: flex;
+	justify-content: space-around;
+}
+
+.zone_info
+{
+	margin: 30px;
+	padding: 5px;
+	border-style: solid;
+	border-radius: 20px;
+}
+
+#img_prod
+{
+
+	border-radius: 20px;
+	
+
+}
+
+#zone_image
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: blue;
+	border-radius: 20px;
+	text-align: center;
+
+}
+
+#ajout_panier
+{
+	background-color: orange;
+	color:white;
+	padding: 4px;
+	border-radius: 8px; 
+}
+
+#comment_zone
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border-style: solid;
+	border-width: 1px;
+	border-color: red;
+	border-radius: 8px;
+	padding: 4px;
+	margin: 4px;
+}
+
+#titre_comment
+{
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.comment
+{
+
+}

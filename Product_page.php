@@ -2,33 +2,48 @@
 <html>
 <head>
 	<title>Product Page</title>
+	<link rel="stylesheet" href="style_product_page.css" />
 </head>
 <body>
-		<section>
-			<article>
-				<img src="image_essai.jpg">
-				
+		
+		<section class="information">
+			<article id="zone_image">
+				<img src="dragon_modele_dangereux.jpg" id="img_prod" alt="Ou est mon dragon?"  >
+				<p id="nom_prod">Wyvern de souffre </p>
 			</article>
 			<aside>
-				<p id="Nom_prod">Produit 1</p>
+				
 			</aside>
-			<aside>
-				<p id="Prix_prod">8000000€</p>
-			</aside>
-			<aside>
-				<p id="Desc_prod">
-					Le produit 1 est fabriqué par M. X
-					<br/>
-					Ses qualitées sont : 		<br/>-blabla 1
-												<br/>-blabla 2
+			<aside class="zone_info">
+				<p id="prix_prod">Prix : 8000000€</p>
+				
+				<p class="titre_desc">Description</p>
+				<p id="desc_prod">
+					Vous fournis l'autorisation de possèder votre dragon personnel<br/>
+					Attention : le dragon n'est pas fournis à la livraison, vous devrez aller le chercher vous même.
+					Afin de garantir votre sécurité nous vous conseillons de jeter un oeil à nos autres produits (armes, armures...)
 
+				</p>
+				<br/>
+				<p class="titre_desc">Fournisseur</p>
+				<p id="fournis">
+					Ce produit vous est fournis par Zangdar, Maitre du Dongon de Naheulbeuk.<br/>
+					Il ne sera ni échangé, ni remboursé.<br/>
+					<br/>
+					Dans le cas où vous insisteriez ce dernier se réserve le droit de vous envoyer une boule de feu
 				</p>
 			</aside>
 			<aside>
 				<form method="post">
-					<input type="submit" value="Ajouter au panier">
+					<input type="submit" value="Ajouter au panier" id="ajout_panier">
 				</form>
 			</aside>
+		</section>
+		<section id="comment_zone">
+			<p id="titre_comment">Commentaires</p>
+			<p class="comment">Commentaire 1</p>
+			<p>Commentaire 2</p>
+			
 		</section>
 </body>
 </html>
