@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="src\CSS\create_account_CSS.css" />
+
+</head>
+<body>
+	<header>
+	
+	</header>
+
+	<div class="InscriptionBody">
+	<br> 
+		<h1>Create An Account and be part of a Better World.</h1>
+	<br>
+	<img class="InscriptionPicture" src="src\pictures\better_postman.jpg">
+	<br> 
+	<br> 
+	<br> 
+	<form class="InscriptionForm">
+		<input class="InscriptionField" type="text" name="pseudo" placeholder="Pseudo"><br><br>
+		<input class="InscriptionNameField" type="text" name="Surname" placeholder="Surname">
+		<input class="InscriptionNameField" type="text" name="Name" placeholder="Name"><br><br>
+		<input class="InscriptionField" type="text" name="email" placeholder="E-mail address"><br><br>
+		<input class="InscriptionField" type="tel" name="phone" placeholder="Phone number" pattern="[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}" required><br><br>
+		<input class="InscriptionField" type="password" name="password" placeholder="Password"><br><br>
+		<input class="InscriptionField" type="password" name="password_two" placeholder="Write your password again"><br><br>
+		We need your Favorite color:
+		<input class="InscriptionColor" type="color" placeholder="000000"><br><br>
+		<input class="InscriptionButton" type="submit" value="Sign in">
+	</form>
+	</div>
+	<footer>
+	
+	</footer>
+</body>
+
+</html>
