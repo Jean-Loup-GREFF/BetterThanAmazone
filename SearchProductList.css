@@ -1,20 +1,25 @@
 TD{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color:black;
-    border-radius: 50px;
-    border-style: ridge;
-    border-color: black;
-    background-color:rgb(253, 253, 253);
+   
+
+    
+    border:none;
+	padding:6px 0 6px 0;
+	border-radius:10px;
+	box-shadow:3px 3px 12px #999;
+	background:#fff;
     height: 300px;
     width: 300px;
-    margin-left: 100px;
-    
-    
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+   color: black;
 
 }
 TABLE{
     margin-left: auto;
     margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 10px 10px; 
 }
 #imageminiature{
     border-radius: 100px;
@@ -23,6 +28,8 @@ TABLE{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
+    box-shadow:10px 10px 10px #aaa;
 
 
 }
@@ -32,12 +39,29 @@ TABLE{
     margin-right: auto;
 
 }
+#productname{
+    border-top:3px solid #4753f3;
+    border-radius:75%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+   color: black;
+   text-decoration: unset;
+
+
+
+}
+
 #searchbox{
-    background-color: crimson;
+    background-color:goldenrod;
+    box-shadow:3px 3px 12px #999;
     margin-left: auto;
     margin-right: auto;
     height: 200px;
     width: 900px;
-
-
+    border-radius:30px;
+    text-align: left;
+    padding-left: 40px;
+    padding-top:8px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
 }

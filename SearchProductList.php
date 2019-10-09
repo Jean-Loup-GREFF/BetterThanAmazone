@@ -4,11 +4,11 @@
 </head>
 <body>
     
-    <p><img src='imageacheter.png' /><br /></p>
+    <p><img src='imageacheter.png' /><br /><h1>Online Store</h1></p>
     <div id='searchbox'>
         <h1>Recherche</h1>
     <form><p>
-    Rechercher un produit dans le Store: 
+    Rechercher un produit: 
     <input type="text" name="search" class=string placeholder="Licorne volante..."/><br />
 </p></form>
     <form><p>
@@ -43,35 +43,35 @@
 </div>
 
 <TABLE>
-<CAPTION> Résultats </CAPTION>
+<CAPTION> </CAPTION>
 
 <TR>
-    <TD><p><a href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br /><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br /><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/><br/> </p></TD>
     
-    <TD><p><a href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
-    <TD><p><a href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p ><br/><a  id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> <br/></p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/><br/> </p></TD>
 </TR>
 <TR>
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> <br/></p></TD>
     
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> <br/></p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/><br/> </p></TD>
 </TR>
 <TR>
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> <br/></p></TD>
     
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img  id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/><br/> </p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img  id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> <br/></p></TD>
 </TR>
 <TR>
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles'  src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles'  src='5etoiles.png' /><br/> 15 euros<br/><br/> </p></TD>
     
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
-    <TD><p><a  href='produit.'>Licorne volante</a><br /><img id='imageminiature' src='licorne.png' /><br/> <img id='etoiles' src='5etoiles.png' /><br/>15 euros<br/> livraison: 0,5 euros en France Metropolitaine</p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/><img id='etoiles' src='5etoiles.png' /><br/> 15 euros<br/> <br/></p></TD>
+    <TD><p ><br/><a id='productname' href='produit.'>Licorne volante</a><br /><br/><img id='imageminiature' src='licorne.png' /><br/> <img id='etoiles' src='5etoiles.png' /><br/>15 euros<br/> <br/></p></TD>
 </TR>
 </TABLE>
 
-
+<p><br/><img src='imagelivraison.png' /></p>
 
 </body>
 
