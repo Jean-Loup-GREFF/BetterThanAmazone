@@ -1,17 +1,22 @@
-<header><a id="headertitle" href="home.php">BAmazone.com</a>
-<nav>
-<div>
-<a href="search.php">Search</a>
-</div>
-<div class="header">
-<a href="contact.php">Contact us</a>
-<p>
-      id/mail
-      <input type="text" name="id" value="mail addresse"/><br />
-      password
-      <input type="text" name="mdp" value="password"/><br />
-      <br />
-  </p>
-</div>
-</nav>
-</header>
+<!DOCTYPE html>
+<html>
+    <head>
+
+      <meta charset="utf-8" />
+      <link rel="stylesheet" href="header.css" />
+
+      <title>Bamazone.com</title>
+
+      <h1><a href="default.asp">Bamazone</a></h1>
+
+      <ul>
+       <li><a href="default.asp">Home</a></li>
+       <li><a href="news.asp">News</a></li>
+       <li><a href="SearchProductList.php">Products</a></li>
+       <li><a href="about.asp">About</a></li>
+       <li>Sign in</li>
+       <li><a href="create_account.php">Sign up</li>
+      </ul>
+
+    </head>
+</html>
