@@ -1,10 +1,10 @@
 
-<body>
+<body id="foot_body">
 
 </body>
-<footer>
+<footer id="foot_page">
 
-    <link rel="stylesheet" href="src/CSS/footer.css" />
+    <link rel="stylesheet" href="style_web_site_complet.css" />
     <ul class="premierul">
      <li class="premierli"><a class="premierlia" href="default.asp">Test</a></li>
      <li class="premierli"><a class="premierlia" href="news.asp">Contact</a></li>
