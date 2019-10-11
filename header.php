@@ -5,9 +5,9 @@
       <meta charset="utf-8" />
       <link rel="stylesheet" href="" />
 
-      <title>Bamazone.com</title>
+      <p><img id='imagebanderole' src='imageacheter.png' /></p>
 
-      <h1><a href="default.asp">Bamazone</a></h1>
+     
 
       <ul id = "menu_page">
        <li class = "essai2"><a class = "menu_reference" href="default.asp">Home</a></li>

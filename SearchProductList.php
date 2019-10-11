@@ -1,10 +1,14 @@
 <html> 
 <head>
     <link rel="stylesheet" href=style_web_site_complet.css />
+    <?php
+			include('header.php');
+		?>
 </head>
-<body>
+<body >
+
     
-    <p><img id='imagebanderole' src='imageacheter.png' /><br /><h1>Online Store</h1></p>
+    
     <div id='searchbox'>
         <h1>Recherche</h1>
     <form><p>
@@ -72,12 +76,14 @@
 </TR>
 </TABLE>
 
-<p><br/><img id='imagebanderole' src='imagelivraison.png' /></p>
+
 
 </body>
 
 
-<footer></footer>
+<footer><?php
+			include('footer.php');
+		?></footer>
 
 
 </html>
