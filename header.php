@@ -15,7 +15,7 @@
        <li><a href="SearchProductList.php">Products</a></li>
        <li><a href="about.asp">About</a></li>
        <li>Sign in</li>
-       <li><a href="create_account.php">Sign up</li>
+       <li><a href="create_account.php">Sign up<a></li>
       </ul>
 
     </head>
