@@ -4,7 +4,7 @@
 </head>
 <body>
     
-    <p><img src='imageacheter.png' /><br /><h1>Online Store</h1></p>
+    <p><img id='imagebanderole' src='imageacheter.png' /><br /><h1>Online Store</h1></p>
     <div id='searchbox'>
         <h1>Recherche</h1>
     <form><p>
@@ -40,6 +40,7 @@
        </select>  
 </p>
 </form>
+<form><p><input type="submit" value="Rechercher" /></p></form>
 </div>
 
 <TABLE>
@@ -71,7 +72,7 @@
 </TR>
 </TABLE>
 
-<p><br/><img src='imagelivraison.png' /></p>
+<p><br/><img id='imagebanderole' src='imagelivraison.png' /></p>
 
 </body>
 
