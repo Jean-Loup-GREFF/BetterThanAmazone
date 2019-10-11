@@ -3,19 +3,19 @@
     <head>
 
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="src/CSS/header.css" />
+      <link rel="stylesheet" href="" />
 
       <title>Bamazone.com</title>
 
       <h1><a href="default.asp">Bamazone</a></h1>
 
-      <ul>
-       <li><a href="default.asp">Home</a></li>
-       <li><a href="news.asp">News</a></li>
-       <li><a href="SearchProductList.php">Products</a></li>
-       <li><a href="about.asp">About</a></li>
-       <li>Sign in</li>
-       <li><a href="create_account.php">Sign up<a></li>
+      <ul id = "menu_page">
+       <li class = "essai2"><a class = "menu_reference" href="default.asp">Home</a></li>
+       <li class = "essai2"><a class = "menu_reference" href="news.asp">News</a></li>
+       <li class = "essai2"><a class = "menu_reference" href="SearchProductList.php">Products</a></li>
+       <li class = "essai2"><a class = "menu_reference" href="about.asp">About</a></li>
+       <li class = "essai2"><a class = "menu_reference" href="sign in">Sign in</a></li>
+       <li class = "essai2"><a class = "menu_reference" href="create_account.php">Sign up<a></li>
       </ul>
 
     </head>

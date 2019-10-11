@@ -1,4 +1,14 @@
-<footer>
-        <div><a href="home.php">home</a></div>
-        <div><a href="www.isen.fr">sponso ISEN</a></div>
+
+<body id="foot_body">
+
+</body>
+<footer id="foot_page">
+
+    <link rel="stylesheet" href="style_web_site_complet.css" />
+    <ul class="premierul">
+     <li class="premierli"><a class="premierlia" href="default.asp">Test</a></li>
+     <li class="premierli"><a class="premierlia" href="news.asp">Contact</a></li>
+     <li class="premierli"><a class="premierlia" href="SearchProductList.php">About</a></li>
+     <li class="premierli"><a class="premierlia" href="about.asp">About</a></li>
+    </ul>
 </footer>
