@@ -3,7 +3,7 @@
     <head>
 
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="header.css" />
+      <link rel="stylesheet" href="src/CSS/header.css" />
 
       <title>Bamazone.com</title>
 
