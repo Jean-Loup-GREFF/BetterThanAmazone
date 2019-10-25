@@ -2,24 +2,28 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="src\CSS\create_account_CSS.css" />
-
+<link rel="stylesheet" href="style_web_site_complet.css" />
+<?php
+			include('header.php');
+		?>
 </head>
-<body>
+<br> 
+		<h1 id='titlegeneral'>Create An Account and be part of a Better World.</h1>
+	<br>
+<body id='accountbody'>
 	<header>
 	
 	</header>
 
 	<div class="InscriptionBody">
-	<br> 
-		<h1>Create An Account and be part of a Better World.</h1>
-	<br>
+	
 	<img class="InscriptionPicture" src="src\pictures\better_postman.jpg">
 	<br> 
 	<br> 
 	<br> 
-	<form class="InscriptionForm">
+	<form id='accountform'>
 		<input class="InscriptionField" type="text" name="pseudo" placeholder="Pseudo"><br><br>
+
 		<input class="InscriptionField" type="password" name="password" placeholder="Password"><br><br>
 		<input class="InscriptionField" type="password" name="password_two" placeholder="Write your password again"><br><br>
 		<input class="InscriptionNameField" type="text" name="Surname" placeholder="Surname">
@@ -34,7 +38,9 @@
 	</form>
 	</div>
 	<footer>
-	
+	<?php
+			include('footer.php');
+		?>
 	</footer>
 </body>
 

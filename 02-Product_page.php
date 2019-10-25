@@ -36,12 +36,14 @@
 					Il ne sera ni échangé, ni remboursé.<br/>
 					<br/>
 					Dans le cas où vous insisteriez ce dernier se réserve le droit de vous envoyer une boule de feu
+
 				</p>
-			</aside>
-			<aside>
-				<form method="post">
+				<form method="post" action="cart.php">
 					<input type="submit" value="Ajouter au panier" id="ajout_panier">
 				</form>
+			</aside>
+			<aside>
+
 			</aside>
 		</section>
 		<section id="comment_zone">

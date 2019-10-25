@@ -5,28 +5,38 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: goldenrod;
+
 }
 
 .essai2
 {
   float: left;
+  list-style-type: none;
 }
 
 .menu_reference 
 {
   display: block;
-  color: white;
+  color: black;
+  background:rgb(211, 181, 105);
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
+  margin: 16px 16px;
   text-decoration: none;
+  border-radius:5%;
+  box-shadow:3px 3px 12px black;
+
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 /*FOOTER*/
 
 .menu_reference:hover 
 {
-  background-color: #111;
+  background-color: goldenrod
+  
 }
 
 
@@ -56,63 +66,80 @@
 
 .premierli {
   float: left;
+  list-style-type: none;
 }
 
 .premierlia {
+
   display: block;
-  color: white;
+  color: black;
+  background:rgb(211, 181, 105);
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
+  margin: 16px 16px;
   text-decoration: none;
+  border-radius:5%;
+  box-shadow:3px 3px 12px black;
+
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .premierlia:hover {
-  background-color: #111;
+  background-color: goldenrod;
 }
 
-
+/*Product page*/
 #nom_prod
 {
-	color: red;
-	font-size: 40px;
+	color: black;
+  font-size: 40px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #prix_prod
 {
-	color:red;
-	font-size: 25px;
+	color: black;
+  font-size: 25px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	
 }
 
 #desc_prod
 {
 	text-align: justify;
-	font-style:  italic;
+  font-style:  italic;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 		
 }
 
 .titre_desc
 {
-	font-weight: bolder;
+  font-weight: bolder;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .information
 {
 	display: flex;
-	justify-content: space-around;
+  justify-content: space-around;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .zone_info
 {
 	margin: 30px;
 	padding: 5px;
-	border-style: solid;
-	border-radius: 20px;
+	
+  border-radius: 20px;
+  background-color: white;
+  box-shadow:3px 3px 12px black;
+  padding-left: 1%;
+  padding-right:1%;
 }
 
 #img_prod
 {
-
+  box-shadow:3px 3px 12px black;
 	border-radius: 20px;
 }
 
@@ -120,20 +147,24 @@
 
 #zone_image
 {
-	border-style: solid;
-	border-width: 1px;
-	border-color: blue;
+	
+	padding-top:3%;
+  padding-left: 3%;
+  padding-right:3%;
 	border-radius: 20px;
-	text-align: center;
+  text-align: center;
+  box-shadow:3px 3px 12px black;
+  background-color: goldenrod;
 
 }
 
 #ajout_panier
 {
-	background-color: orange;
+	background-color: goldenrod;
 	color:white;
 	padding: 4px;
-	border-radius: 8px; 
+  border-radius: 8px; 
+
 }
 
 #comment_zone
@@ -141,12 +172,12 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	border-style: solid;
-	border-width: 1px;
-	border-color: red;
+	box-shadow:3px 3px 12px black;
 	border-radius: 8px;
 	padding: 4px;
-	margin: 4px;
+  margin: 4px;
+  background: white;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #body_princ
@@ -158,78 +189,184 @@
 #titre_comment
 {
 	font-weight: bold;
-	font-size: 25px;
+  font-size: 25px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/*Search Product*/
+TD{
 
-TD
-{
-   
-
-    
-    border:none;
-	padding:6px 0 6px 0;
-	border-radius:10px;
-	box-shadow:3px 3px 12px #999;
-	background:#fff;
-    height: 300px;
-    width: 300px;
-    text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
+  border:none;
+padding:6px 0 6px 0;
+border-radius:5%;
+box-shadow:3px 3px 12px #999;
+background:#fff;
+  max-height: 30%;
+  max-width: 30%;
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 120%;
    color: black;
 
 }
-
-TABLE
-{
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: separate;
-    border-spacing: 10px 10px; 
+TABLE{
+  width:90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-collapse: separate;
+  border-spacing: 10px 10px; 
 }
 #imageminiature{
-    border-radius: 100px;
-    height: 200px;
-    width: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
-    box-shadow:10px 10px 10px #aaa;
+  border-radius: 50%;
+  max-height: 50%;
+  max-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  scroll-margin-bottom: auto;
+  
+  box-shadow:5px 5px 5px #aaa;
 
 
 }
 #etoiles{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  scroll-margin-bottom: auto;
+  max-height: 30%;
+  max-width: 20%;
 
 }
 #productname{
-    border-top:3px solid #4753f3;
-    border-radius:75%;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
-   color: black;
-   text-decoration: unset;
+  border-top:3px solid #4753f3;
+  border-radius:75%;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 200%;
+ color: black;
+ text-decoration: unset;
 
 
 
 }
 
 #searchbox{
-    background-color:goldenrod;
-    box-shadow:3px 3px 12px #999;
-    margin-left: auto;
-    margin-right: auto;
-    height: 200px;
-    width: 900px;
-    border-radius:30px;
-    text-align: left;
-    padding-left: 40px;
-    padding-top:8px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: black;
+  background-color:goldenrod;
+  box-shadow:3px 3px 12px #999;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:10%;
+  width: 90%;
+  border-radius:5%;
+  text-align: left;
+  padding-left: 2%;
+  padding-top:2%;
+  padding-right: 2%;
+  padding-bottom:2%;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+  font-size:200%
+  
 }
 
+
+
+/*General*/
+#imagebanderole{/**pour les pubs**/
+  width: 100%;
+}
+
+BODY{
+  background-color: grey;
+}
+p{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+  
+}
+
+#titlegeneral{
+  margin-top:10%;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+  text-align:center;
+  font-size: 150%;
+}
+
+/*create_account*/
+.InscriptionBody
+{
+  overflow: hidden;
+
+  
+}
+.InscriptionPicture
+{
+	float:left;
+	width: 30%;
+	height: 30%;
+	margin: 20px 20px;
+	margin-left: 75px;
+}
+.InscriptionButton
+{
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	background-color:rgb(211, 181, 105);
+	border-radius: 8px;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	transition: 0.3s;
+  padding: 10px 152px;
+  box-shadow:3px 3px 12px black;
+}
+.InscriptionButton:hover
+{
+	background-color: goldenrod;
+}
+.InscriptionField, .InscriptionNameField
+{
+	border: none;
+	border: 0.4mm ridge rgb(72, 72, 72, .8);
+	color:black;
+	text-align: left-side;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	background-color: rgb(245,245,255);
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	cursor: pointer;
+	transition: 0.18s;
+  padding: 4px 100px;
+  box-shadow:3px 3px 12px black;
+}
+.InscriptionField:hover, .InscriptionNameField:hover
+{
+	border: 0.4mm ridge rgb(211, 181, 105);
+}
+.InscriptionField:active, .InscriptionNameField:active
+{
+	border: 0.4mm ridge rgb(255, 255, 255, .9);
+}
+
+#accountform
+{
+	min-height: 95vh;
+	text-align: left;
+}
+#accountbody
+{
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+	color: white;
+	height: 90vh;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

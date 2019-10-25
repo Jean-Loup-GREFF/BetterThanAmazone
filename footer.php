@@ -11,4 +11,5 @@
      <li class="premierli"><a class="premierlia" href="SearchProductList.php">About</a></li>
      <li class="premierli"><a class="premierlia" href="about.asp">About</a></li>
     </ul>
+    <p><br/><img id='imagebanderole' src='imagelivraison.png' /></p>
 </footer>
