@@ -80,7 +80,7 @@
     }
 	$column=0;
 	foreach($productsList as $product){
-		echo '<TD><p><br/><a id="productname" href="produit">'.$product["name"].'</a><br /><br/><img id="imageminiature" "src=src/pictures/"'.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
+		echo '<TD><p><br/><a id="productname" href="Product_page.php?id_prod='.$product["id"].'">'.$product["name"].'</a><br /><br/><img id="imageminiature" "src=src/pictures/"'.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
   	}
 	$column+=1;
 	if ($column%3==0){
