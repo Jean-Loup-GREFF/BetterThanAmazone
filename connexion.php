@@ -3,6 +3,21 @@
 	$bdd = new PDO('mysql:host=localhost;dbname=bamazone','root', '');
 	
 	
+	function insertToBDD($request)
+	{
+		//$response = $GLOBALS["bdd"]->exec($request);
+		$response = $GLOBALS["bdd"]->query($request);
+		
+		$response->closeCursor();
+		/*
+		if ($response = $GLOBALS["bdd"]->query($request) == FALSE)
+		{
+			echo "Error while inserting in BDD";
+		}*/
+		
+		$response->closeCursor();
+		return;
+	}
 	function getFromRequest($request, $parameterList)
 	{
 		$list = array();
@@ -24,11 +39,78 @@
 	
 	
 	function getAllCategoriesName() { return getFromRequest("SELECT * FROM `ranges`", ["name", "created_at", "id", "parent_id"]); }
-	function getAllUsersName() {return getFromRequest("SELECT * FROM `users`", ["id", "firstname", "lastname", "username", "color", "email", "password", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
-	function getUserByUsername($username) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\"", ["id", "firstname", "lastname", "username",]);}
-
-
-//	var_dump(getAllUsersName());
+	function getAllUsers() {return getFromRequest("SELECT * FROM `users`", ["id", "firstname", "lastname", "username", "color", "email", "password", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getAllOrders() {return getFromRequest("SELECT * FROM `orders`", ["id", "user_id", "type", "status", "amount", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getOrdersOfUser($userId) {return getFromRequest("SELECT `o`.* FROM `orders` `o` INNER JOIN `users` `u` ON `o`.`user_id` = `u`.`id` WHERE `u`.`id` = \"".$userId."\"", ["id", "user_id", "type", "status", "amount", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getCartOrderOfUser($userId) {return getFromRequest("SELECT `o`.* FROM `orders` `o` INNER JOIN `users` `u` ON `o`.`user_id` = `u`.`id` WHERE `u`.`id` = \"".$userId."\" AND `o`.`type` = \"CART\" ", ["id", "user_id", "type", "status", "amount", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getOrderByID($orderId) {return getFromRequest("SELECT `o`.* FROM `orders` `o` WHERE `o`.`id` = \"".$orderId."\"", ["id", "user_id", "type", "status", "amount", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getOrderProductOfOrder($orderId) {return getFromRequest("SELECT `op`.* FROM `order_products` `op` INNER JOIN `orders` `o` ON `op`.`order_id` = `o`.`id` WHERE `o`.`id` = \"".$orderId."\"", ["id", "order_id", "product_id", "quantity", "unit_price", "rating", "comment", "created_at", "updated_at"]);}
+	function getOrderProductOfOrderAndSpecificProduct($orderId, $productId) {return getFromRequest("SELECT `op`.* FROM `order_products` `op` WHERE `op`.`order_id` = \"".$orderId."\" AND `op`.`product_id` = \"".$productId."\"", ["id", "order_id", "product_id", "quantity", "unit_price", "rating", "comment", "created_at", "updated_at"]);}
+	function getUserByUsername($username) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\"", ["id", "firstname", "lastname", "username"]);}
+	function getUserById($userId) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`id` = \"".$userId."\"", ["id", "firstname", "lastname", "username", "billing_adress_id", "delivery_adress_id"]);}
+	function getAllProducts() {return getFromRequest("SELECT * FROM `products`", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getProductById($productId) { return getFromRequest("SELECT `o`.* FROM `products` `o` WHERE `o`.`id` = \"".$productId."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getProductsByCategorie($range) {return getFromRequest("SELECT `p`.* FROM `products` `p` INNER JOIN `ranges` `r` ON `p`.`range_id` = `r`.`id` WHERE `r`.`name`= \"".$range."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getProductsByOrderId($orderId) {return getFromRequest("SELECT `p`.*,`op`.`quantity`, `op`.`unit_price` as `order_unit_price` FROM `products` `p` INNER JOIN `order_products` `op` ON `p`.`id` = `op`.`product_id` WHERE `op`.`order_id`= \"".$orderId."\"", ["id", "name", "quantity", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getProductsContainingName($name) { return getFromRequest("SELECT `p`.* FROM `products` `p` WHERE `p`.`name` LIKE \""."%".$name."%"."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getProductsContainingNameByCategorie($name, $range) { return getFromRequest("SELECT `p`.* FROM `products` `p` INNER JOIN `ranges` `r` ON `p`.`range_id` = `r`.`id` WHERE `p`.`name` LIKE \""."%".$name."%"."\" AND `r`.`name`= \"".$range."\" ", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getCommentsByProductId($productId) {return getFromRequest("SELECT `op`.*, `u`.`username` FROM `order_products` `op` INNER JOIN `products` `p` ON `op`.`product_id` = `p`.`id` INNER JOIN `orders` `o` ON `op`.`order_id` = `o`.`id` INNER JOIN `users` `u` ON `o`.`user_id` = `u`.`id` WHERE `p`.`id`= \"".$productId."\"", ["username", "rating", "comment", "created_at", "updated_at"]);}
+	
+	function addToCart($userId ,$productId, $amount = 1) {
+		
+		$user = array_slice(getUserById($userId), 0, 1);
+		$product = array_slice(getProductById($productId), 0, 1);
+		
+		if(count($user) == 0 || count($product) == 0)  { return "ERROR, wrong userID or productID"; }
+		
+		$orderAsCart = array_slice(getCartOrderOfUser($userId), 0, 1);
+		
+		//If the user doesn't possess an order yet
+		if (count($orderAsCart) == 0)
+		{
+			insertToBDD("INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`) VALUES (\"".$user[0]["id"]."\", \"CART\", \"CART\", \"0\", \"".$user[0]["billing_adress_id"]."\", \"".$user[0]["delivery_adress_id"]."\")");
+			$orderAsCart = array_slice(getCartOrderOfUser($userId), 0, 1);
+			if(count($orderAsCart) == 0)
+			{
+				return "ERROR, Can't add a new cart order";
+			}
+		}
+		$orderProduct = array_slice(getOrderProductOfOrderAndSpecificProduct($orderAsCart[0]["id"], $productId), 0, 1);
+		
+		//If the cart doesn"t possess the product yet
+		if (count($orderProduct) == 0)
+		{
+			insertToBDD("INSERT INTO `order_products` (`order_id`, `product_id`, `quantity`, `unit_price`) VALUES (\"".$orderAsCart[0]["id"]."\", \"".$productId."\", \"".$amount."\", \"".$product[0]["unit_price"]."\")");
+			$orderProduct = array_slice(getCartOrderOfUser($userId), 0, 1);
+			if(count($orderProduct) == 0)
+			{
+				return "ERROR, Can't add a new order_product";
+			}
+		}
+		else
+		{
+			$quantity = $orderProduct[0]["quantity"] + $amount;
+			insertToBDD("UPDATE `order_products` SET `quantity` = \"".$quantity."\" WHERE `id` = \"".$orderProduct[0]["id"]."\"");
+		}
+	}
+//	var_dump(getAllUsers());
 //	var_dump(getUserByUsername("Frederic"));
 
+//	var_dump(getAllOrders());
+//	var_dump(getOrdersOfUser(2));
+//	var_dump(array_slice(getCartOrderOfUser(2), 0, 1));
+
+//	var_dump(getOrderProductOfOrder(2));
+//	var_dump(getOrderProductOfOrderAndSpecificProduct(2, 3));
+
+//	var_dump(getAllProducts());
+//	var_dump(getProductsByCategorie("Main range"));
+//	var_dump(getCommentsByProductId(2));
+//	var_dump(getProductsContainingName("esT"));
+//	var_dump(getProductsContainingNameByCategorie("esT", "Main range"));
+
+
+
+//	var_dump(addToCart(2, 3, 2));
+//	var_dump(addToCart(3, 2, 3));
 ?>
