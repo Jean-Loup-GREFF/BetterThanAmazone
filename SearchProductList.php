@@ -1,4 +1,4 @@
-<html> 
+<html>
 <head>
     <link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
     <?php
@@ -8,16 +8,16 @@
 </head>
 <body >
 
-    
-    
+
+
     <div id='searchbox'>
         <h1>Recherche</h1>
     <form action="SearchProductList.php" method="post"><p>
-    Rechercher un produit: 
+    Rechercher un produit:
     <input type="text" name="search" class=string placeholder="Licorne volante..."/><br />
 </p>
     <p>
-    
+
     <label for="budget">Votre budget:</label>
 	<input type="number" name="budget" id="budget" value=50 />
 	<?php
@@ -31,15 +31,15 @@
            <option value="entre30et40">30-40 euros</option>
            <option value="entre40et50">40-50 euros</option>
            <option value="plusde50">plus de 50 euros</option>
-       </select>  
+       </select>
 	 */?>
 </p>
 
 <p>
-    
+
     <label for="categorie">Catégorie:</label>
        <select name="categorie" id="categorie">
-	   <?php 
+	   <?php
 			$listCategories = getAllCategoriesName();
 			foreach($listCategories as $categorie)
 			{
@@ -54,7 +54,7 @@
            <option value="livredesorts">Livre de Sortilèges</option>
            <option value="creatures">Créatures</option>*/
 		?>
-       </select>  
+       </select>
 </p>
 
 <p><input type="submit" name="valider" value="Rechercher" /></p></form>
@@ -66,7 +66,7 @@
 <TABLE>
 <CAPTION> </CAPTION>
 
-<?php 
+<?php
 	$productList = array();
 	if (isset($_POST["valider"])) {
 		$searchEntries=True;
@@ -80,8 +80,8 @@
     }
 	$column=0;
 	foreach($productsList as $product){
-		echo '<TD><p ><br/><a id="productname"  method="post"  href="Product_page.php?id_prod='.$product["id"].'">'.$product["name"].'</a><br /><br/><img id="imageminiature" src='.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
-	}
+		echo '<TD><p><br/><a id="productname" href="produit">'.$product["name"].'</a><br /><br/><img id="imageminiature" "src=src/pictures/"'.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
+  	}
 	$column+=1;
 	if ($column%3==0){
 		echo '</TR><TR>';
