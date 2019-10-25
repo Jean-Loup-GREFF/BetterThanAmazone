@@ -8,15 +8,13 @@
 		//$response = $GLOBALS["bdd"]->exec($request);
 		$response = $GLOBALS["bdd"]->query($request);
 		
-		$response->closeCursor();
-		/*
-		if ($response = $GLOBALS["bdd"]->query($request) == FALSE)
-		{
-			echo "Error while inserting in BDD";
-		}*/
+		$last_id = $GLOBALS["bdd"]->lastInsertId();
 		
 		$response->closeCursor();
-		return;
+		
+		echo $last_id;
+		
+		return $last_id;
 	}
 	function getFromRequest($request, $parameterList)
 	{
@@ -36,7 +34,19 @@
 		return $list;
 	}
 	
-	
+	function intersectLists($listA, $listB)
+	{
+		$listFinale = array();
+		foreach($listA as $a)
+		{
+			foreach($listB as $b)
+			{
+				if($a["id"] == $b["id"])
+					$listFinale[] = $a;
+			}
+		}
+		return $listFinale;
+	}
 	
 	function getAllCategoriesName() { return getFromRequest("SELECT * FROM `ranges`", ["name", "created_at", "id", "parent_id"]); }
 	function getCategoriesById($rangeId) { return getFromRequest("SELECT `r`.* FROM `ranges` `r` WHERE `r`.`id` = \"".$rangeId."\"", ["name", "created_at", "id", "parent_id"]); }
@@ -58,6 +68,7 @@
 	function getAddressById($addressId) { return getFromRequest("SELECT `a`.* FROM `user_addresses` `a` WHERE `a`.`id` = \"".$addressId."\"", ["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
 	
 	function getAllProducts() {return getFromRequest("SELECT * FROM `products`", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
+	function getProductsBetweenPrices($inferiorPrice, $superiorPrice) {return getFromRequest("SELECT `p`.* FROM `products` `p` WHERE `p`.`unit_price` >= \"".$inferiorPrice."\" AND `p`.`unit_price` <= \"".$superiorPrice."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
 	function getProductById($productId) { return getFromRequest("SELECT `o`.* FROM `products` `o` WHERE `o`.`id` = \"".$productId."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
 	function getProductsByCategorieId($rangeId) {return getFromRequest("SELECT `p`.* FROM `products` `p` INNER JOIN `ranges` `r` ON `p`.`range_id` = `r`.`id` WHERE `r`.`id`= \"".$rangeId."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
 	function getProductsByCategorie($range) {return getFromRequest("SELECT `p`.* FROM `products` `p` INNER JOIN `ranges` `r` ON `p`.`range_id` = `r`.`id` WHERE `r`.`name`= \"".$range."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
@@ -104,6 +115,34 @@
 			insertToBDD("UPDATE `order_products` SET `quantity` = \"".$quantity."\" WHERE `id` = \"".$orderProduct[0]["id"]."\"");
 		}
 	}
+	
+	function createAddress($humanName, $address_one, $address_two, $postal_code, $city, $country)
+	{
+		return insertToBDD("INSERT INTO `user_addresses` (`human_name`, `address_one`, `address_two`, `postal_code`, `city`, `country`) VALUES (\"".$humanName."\", \"".$address_one."\", \"".$address_two."\", \"".$postal_code."\", \"".$city."\", \"".$country."\")");
+	}
+	
+	//if not billing_adress, it is a delivery address
+	function addAddressToAccount($userId, $addressId, $isBillingAddress)
+	{
+		if($isBillingAddress == TRUE)
+			insertToBDD("UPDATE `users` SET `billing_adress_id` = \"".$addressId."\" WHERE `id` = \"".$userId."\"");
+		else
+			insertToBDD("UPDATE `users` SET `delivery_adress_id` = \"".$addressId."\" WHERE `id` = \"".$userId."\"");
+	}
+	
+	
+	function createAccount($firstName, $lastName, $username, $color, $email, $password, $passwordAgain)
+	{
+		if(count(getUserByUsername($username)) > 0)
+		{
+			return "ERROR, username already taken!";
+		}
+		if($password != $passwordAgain)
+		{
+			return "ERROR, the passwords are not the same!";
+		}
+		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`) VALUES (\"".$firstName."\", \"".$lastName."\", \"".$username."\", \"".$color."\", \"".$email."\", \"".$password."\")");
+	}
 
 //	var_dump(getCategoriesChildByCategorieId(2));
 //	var_dump(getCategoriesChildByCategorieName("Main range"));
@@ -124,6 +163,7 @@
 //	var_dump(getProductsByCategorie("Main range"));
 //	var_dump(getCommentsByProductId(2));
 //	var_dump(getProductsByUserId(2));
+//	var_dump(getProductsByOrderId(4));
 //	var_dump(getProductsContainingName("esT"));
 //	var_dump(getProductsContainingNameByCategorie("esT", "Main range"));
 
@@ -131,4 +171,6 @@
 
 //	var_dump(addToCart(2, 3, 2));
 //	var_dump(addToCart(3, 2, 3));
+//	echo createAddress("Bobby Bob", "123 rue du trou", "Chez mamie", "59000", "Lille", "FRANCE");
+	
 ?>
