@@ -3,7 +3,7 @@
     <head>
 
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="" />
+      <link rel="stylesheet" href="src\CSS\header.css" />
 
       <p><img id='imagebanderole' src='imageacheter.png' /></p>
 
@@ -15,7 +15,7 @@
        <li class = "essai2"><a class = "menu_reference" href="SearchProductList.php">Products</a></li>
        <li class = "essai2"><a class = "menu_reference" href="about.asp">About</a></li>
        <li class = "essai2"><a class = "menu_reference" href="sign in">Sign in</a></li>
-       <li class = "essai2"><a class = "menu_reference" href="create_account.php">Sign up<a></li>
+       <li class = "essai2"><a class = "menu_reference" href="create_account.php">Sign up</a></li>
       </ul>
 
     </head>
