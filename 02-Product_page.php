@@ -6,29 +6,14 @@
 	<?php
 			include('header.php');
 		?>
-	<link rel="stylesheet" href="style_web_site_complet.css" />
 </head>
 
-
 <body  id="body_princ">
-		
-		<?php
-			$id_prod = $_GET["id_prod"];
-			
-			$bdd = new PDO('mysql:host=localhost;dbname=bamazone','root','');
 
-			$image_file = $bdd->query("SELECT image FROM 'products' WHERE id = ".($id_prod)." ");
-			
-			$price = $bdd->query("SELECT unit_price FROM products WHERE id = '".($id_prod)."'");
 
-			$description = $bdd->query("SELECT unit_price FROM description WHERE id = '".($id_prod)."'");
-			
-			
-			
-		?>
 		<section class="information">
 			<article id="zone_image">
-				<img src="dragon_modele_dangereux.jpg" id="img_prod" alt="Ou est mon dragon?"  >
+				<img src="src/pictures/dragon_modele_dangereux.jpg" id="img_prod" alt="Ou est mon dragon?"  >
 				<p id="nom_prod">Wyvern de souffre </p>
 			</article>
 			<aside>

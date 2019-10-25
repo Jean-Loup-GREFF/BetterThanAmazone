@@ -2,25 +2,25 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="style_web_site_complet.css" />
+<link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
 <?php
 			include('header.php');
 		?>
 </head>
-<br> 
+<br>
 		<h1 id='titlegeneral'>Create An Account and be part of a Better World.</h1>
 	<br>
 <body id='accountbody'>
 	<header>
-	
+
 	</header>
 
 	<div class="InscriptionBody">
-	
+
 	<img class="InscriptionPicture" src="src\pictures\better_postman.jpg">
-	<br> 
-	<br> 
-	<br> 
+	<br>
+	<br>
+	<br>
 	<form id='accountform'>
 		<input class="InscriptionField" type="text" name="pseudo" placeholder="Pseudo"><br><br>
 
