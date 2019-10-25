@@ -20,9 +20,6 @@
 
 			$prod_com = array_slice(getCommentsByProductId($id_prod),0,1);
 			
-
-			
-			
 		?>
 		<section class="information">
 			<article id="zone_image">
@@ -60,7 +57,7 @@
 					?>
 
 				</p>
-				<form method="post" action="cart.php">
+				<form method="post" action="<?php addToCart(1,$id_prod)?>">
 					<input type="submit" value="Ajouter au panier" id="ajout_panier">
 				</form>
 			</aside>
@@ -71,11 +68,17 @@
 		<section id="comment_zone">
 			<p id="titre_comment">Commentaires</p>
 			<p class="comment">
+
 				<?php
-					echo $prod_com[0]['comment'];
+					foreach ($prod_com as $com)
+					{ 
+						echo "Redige par : ".$com['username']."<br>";
+						echo "Note : ".$com['rating'];
+						echo "<br>".$com['comment'];
+					}
 				?>
 			</p>
-			<p>Commentaire 2</p>
+			
 
 		</section>
 
