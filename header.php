@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <header>
 
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="src\CSS\header.css" />
 
-      <p><img id='imagebanderole' src='imageacheter.png' /></p>
+      <p><img id='imagebanderole' src='src/pictures/imageacheter.png' /></p>
 
-     
+
 
       <ul id = "menu_page">
        <li class = "essai2"><a class = "menu_reference" href="default.asp">Home</a></li>
@@ -18,5 +17,5 @@
        <li class = "essai2"><a class = "menu_reference" href="create_account.php">Sign up</a></li>
       </ul>
 
-    </head>
+    </header>
 </html>

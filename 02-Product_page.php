@@ -2,26 +2,26 @@
 <html>
 <head>
 	<title>Product Page</title>
-	<link rel="stylesheet" href="style_web_site_complet.css" />
+	<link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
 	<?php
 			include('header.php');
 		?>
 </head>
 
 <body  id="body_princ">
-		
-		
+
+
 		<section class="information">
 			<article id="zone_image">
-				<img src="dragon_modele_dangereux.jpg" id="img_prod" alt="Ou est mon dragon?"  >
+				<img src="src/pictures/dragon_modele_dangereux.jpg" id="img_prod" alt="Ou est mon dragon?"  >
 				<p id="nom_prod">Wyvern de souffre </p>
 			</article>
 			<aside>
-				
+
 			</aside>
 			<aside class="zone_info">
 				<p id="prix_prod">Prix : 8000000€</p>
-				
+
 				<p class="titre_desc">Description</p>
 				<p id="desc_prod">
 					Vous fournis l'autorisation de possèder votre dragon personnel<br/>
@@ -50,7 +50,7 @@
 			<p id="titre_comment">Commentaires</p>
 			<p class="comment">Commentaire 1</p>
 			<p>Commentaire 2</p>
-			
+
 		</section>
 
 		<?php
