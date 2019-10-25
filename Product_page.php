@@ -12,17 +12,24 @@
 
 
 <body  id="body_princ">
-		
+
 		<?php
-			if(empty($_GET))
+		  if(isset($_GET["cartproduct"])){
+				if(isset($_GET["quantity"])){
+					addToCart(1,$_GET["cartproduct"],$_GET["quantity"]);
+			  }
+				else {
+					addToCart(1,$_GET["cartproduct"]);
+				}
+		  }
+			if(empty($_GET["id_prod"]))
 			{
 				$id_prod = -1000;
-
 			}
 			else
 			{
 				$id_prod = $_GET["id_prod"];
-			
+
 				$prod_data = array_slice(getProductById($id_prod),0,1);
 
 				$prod_com = array_slice(getCommentsByProductId($id_prod),0,1);
@@ -51,7 +58,7 @@
 
 			</aside>
 			<aside class="zone_info">
-				<p id="prix_prod">Prix : 
+				<p id="prix_prod">Prix :
 					<?php
 						if($id_prod != -1000){
 							echo $prod_data[0]["unit_price"]." €";
@@ -90,8 +97,11 @@
 					?>
 
 				</p>
-				<form method="post" action="<?php addToCart(1,$id_prod)?>">
-					<input type="submit" value="Ajouter au panier" id="ajout_panier">
+				<form method="get" action="Product_page.php">
+     			<input type="text" name="quantity" value="1"/><br />
+    			<input type="hidden" name="id_prod" value="<?php echo $id_prod ?>" />
+    			<input type="hidden" name="cartproduct" value="<?php echo $id_prod ?>" />
+      		<input type="submit" value="Ajouter au panier" id="ajout_panier">
 				</form>
 			</aside>
 			<aside>
@@ -105,7 +115,7 @@
 				<?php
 					if($id_prod != -1000){
 						foreach ($prod_com as $com)
-						{ 
+						{
 							echo "Redige par : ".$com['username']."<br>";
 							echo "Note : ".$com['rating'];
 							echo "<br>".$com['comment'];
@@ -118,7 +128,7 @@
 					}
 				?>
 			</p>
-			
+
 
 		</section>
 

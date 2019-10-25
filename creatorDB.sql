@@ -7,7 +7,7 @@ CREATE TABLE `ranges` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY IDX_range_parent (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 DROP TABLE IF EXISTS `products`;
@@ -23,7 +23,7 @@ CREATE TABLE `products` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `IDX_product_range` (`range_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `user_addresses`;
 CREATE TABLE `user_addresses` (
@@ -37,7 +37,7 @@ CREATE TABLE `user_addresses` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `order_addresses`;
 CREATE TABLE `order_addresses` (
@@ -51,7 +51,7 @@ CREATE TABLE `order_addresses` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -69,7 +69,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `IDX_user_billing_adress` (`billing_adress_id`),
   KEY `IDX_user_delivery_adress` (`delivery_adress_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
@@ -86,7 +86,7 @@ CREATE TABLE `orders` (
   KEY `IDX_user_billing_adress` (`billing_adress_id`),
   KEY `IDX_user_delivery_adress` (`delivery_adress_id`),
   KEY `IDX_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `order_products`;
 CREATE TABLE `order_products` (
@@ -102,14 +102,14 @@ CREATE TABLE `order_products` (
   PRIMARY KEY (`id`),
   KEY `IDX_order_product` (`order_id`),
   KEY `IDX_product_order` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `ranges` (`name`,`parent_id`) VALUES ('Main range', null);
-INSERT INTO `ranges` (`name`,`parent_id`) VALUES ('Second range', 1);
-INSERT INTO `ranges` (`name`,`parent_id`) VALUES ('Third range', 1);
+INSERT INTO `ranges` (`name`,`parent_id`) VALUES ('Bebêtes', null);
+INSERT INTO `ranges` (`name`,`parent_id`) VALUES ('Bebêtes dangereuses', 1);
+INSERT INTO `ranges` (`name`,`parent_id`) VALUES ('Bebêtes pas dangereuses', 1);
 
-INSERT INTO `products` (`name`,`description`,`range_id`,`unit_price`) VALUES ('test','description',2,57.08);
-INSERT INTO `products` (`name`,`description`,`range_id`,`unit_price`) VALUES ('test2','description2',3,46.22);
+INSERT INTO `products` (`name`,`description`,`range_id`,`unit_price`,`image`) VALUES ('Dragon de souffre','permis de possession dragon',2,8000000,"Dragon_modele_dangereux.jpg");
+INSERT INTO `products` (`name`,`description`,`range_id`,`unit_price`,`image`) VALUES ('Licorne volante','fonction couteau suisse de poche',3,15000,"licorne.png");
 
 INSERT INTO `user_addresses` (`human_name`, `address_one`, `address_two`, `postal_code`, `city`, `country`)
   VALUES ('Fred Eric', '2 impasse Duvet','3ieme étage', '59000', 'Lille', 'FRANCE');
@@ -134,15 +134,9 @@ INSERT INTO `order_addresses` (`human_name`, `address_one`, `address_two`, `post
 INSERT INTO `order_addresses` (`human_name`, `address_one`, `address_two`, `postal_code`, `city`, `country`)
   VALUES ('Fred Eric', '120 Boulevard Vaubant','B506', '59000', 'Lille', 'FRANCE');
 
-INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`)
-  VALUES (1,'CART', 'CART', 149.52, 1, 2);
-INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`)
-  VALUES (1,'ORDER', 'BILLED', 100, 3, 4);
+INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`) VALUES (1,'CART', 'CART', 8015000, 1, 2);
+INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`) VALUES (2,'ORDER', 'BILLED', 16000000, 3, 4);
 
-INSERT INTO `order_products` (order_id, product_id, quantity, unit_price)
-  VALUES (1,1,1,57.08);
-INSERT INTO `order_products` (order_id, product_id, quantity, unit_price)
-  VALUES (1,2,3,46.22);
-
-INSERT INTO `order_products` (order_id, product_id, quantity, unit_price)
-  VALUES (2,1,2,50);
+INSERT INTO `order_products` (order_id, product_id, quantity, unit_price, comment) VALUES (1,1,1,8000000,"tres amical");
+INSERT INTO `order_products` (order_id, product_id, quantity, unit_price, comment) VALUES (1,2,1,15000,"tres dangereux");
+INSERT INTO `order_products` (order_id, product_id, quantity, unit_price) VALUES (2,1,2,8000000);
