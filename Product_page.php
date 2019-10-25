@@ -2,9 +2,14 @@
 <html>
 <head>
 	<title>Product Page</title>
-	<link rel="stylesheet" href="style_product_page.css" />
+	<link rel="stylesheet" href="style_web_site_complet.css" />
+	<?php
+			include('header.php');
+		?>
 </head>
-<body>
+
+<body  id="body_princ">
+		
 		
 		<section class="information">
 			<article id="zone_image">
@@ -31,12 +36,14 @@
 					Il ne sera ni échangé, ni remboursé.<br/>
 					<br/>
 					Dans le cas où vous insisteriez ce dernier se réserve le droit de vous envoyer une boule de feu
+
 				</p>
-			</aside>
-			<aside>
-				<form method="post">
+				<form method="post" action="cart.php">
 					<input type="submit" value="Ajouter au panier" id="ajout_panier">
 				</form>
+			</aside>
+			<aside>
+
 			</aside>
 		</section>
 		<section id="comment_zone">
@@ -45,5 +52,9 @@
 			<p>Commentaire 2</p>
 			
 		</section>
+
+		<?php
+			include('footer.php');
+		?>
 </body>
 </html>
