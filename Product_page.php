@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
 	<?php
 			include('header.php');
+			include('connexion.php')
 		?>
 	<link rel="stylesheet" href="style_web_site_complet.css" />
 </head>
@@ -15,42 +16,48 @@
 		<?php
 			$id_prod = $_GET["id_prod"];
 			
-			$bdd = new PDO('mysql:host=localhost;dbname=bamazone','root','');
+			$prod_data = array_slice(getProductById($id_prod),0,1);
 
-			$image_file = $bdd->query("SELECT image FROM 'products' WHERE id = ".($id_prod)." ");
+			$prod_com = array_slice(getCommentsByProductId($id_prod),0,1);
 			
-			$price = $bdd->query("SELECT unit_price FROM products WHERE id = '".($id_prod)."'");
 
-			$description = $bdd->query("SELECT unit_price FROM description WHERE id = '".($id_prod)."'");
-			
 			
 			
 		?>
 		<section class="information">
 			<article id="zone_image">
-				<img src="dragon_modele_dangereux.jpg" id="img_prod" alt="Ou est mon dragon?"  >
-				<p id="nom_prod">Wyvern de souffre </p>
+				<img src="src/Pictures/<?php
+						echo $prod_data[0]["image"];
+					?>" id="img_prod" alt="Ou est mon dragon?"  >
+				<p id="nom_prod">
+					<?php
+						echo $prod_data[0]["name"];
+					?>
+				</p>
 			</article>
 			<aside>
 
 			</aside>
 			<aside class="zone_info">
-				<p id="prix_prod">Prix : 8000000€</p>
+				<p id="prix_prod">Prix : 
+					<?php
+						echo $prod_data[0]["unit_price"]." €";
+					?>
+				</p>
 
 				<p class="titre_desc">Description</p>
 				<p id="desc_prod">
-					Vous fournis l'autorisation de possèder votre dragon personnel<br/>
-					Attention : le dragon n'est pas fournis à la livraison, vous devrez aller le chercher vous même.
-					Afin de garantir votre sécurité nous vous conseillons de jeter un oeil à nos autres produits (armes, armures...)
+					<?php
+						echo $prod_data[0]["description"];
+					?>
 
 				</p>
 				<br/>
 				<p class="titre_desc">Fournisseur</p>
 				<p id="fournis">
-					Ce produit vous est fournis par Zangdar, Maitre du Dongon de Naheulbeuk.<br/>
-					Il ne sera ni échangé, ni remboursé.<br/>
-					<br/>
-					Dans le cas où vous insisteriez ce dernier se réserve le droit de vous envoyer une boule de feu
+					<?php
+						echo $prod_data[0]["supplier"];
+					?>
 
 				</p>
 				<form method="post" action="cart.php">
@@ -63,7 +70,11 @@
 		</section>
 		<section id="comment_zone">
 			<p id="titre_comment">Commentaires</p>
-			<p class="comment">Commentaire 1</p>
+			<p class="comment">
+				<?php
+					echo $prod_com[0]['comment'];
+				?>
+			</p>
 			<p>Commentaire 2</p>
 
 		</section>
