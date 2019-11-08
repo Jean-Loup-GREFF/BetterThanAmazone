@@ -55,7 +55,7 @@
 			{
 				include('Home.php');
 			}
-			else if(!empty($_GET["chosen_page"]))
+			else if(!empty($_GET["chosen_page"]) and file_exists($_GET["chosen_page"]))
 			{
 				include($_GET["chosen_page"]);
 			}
