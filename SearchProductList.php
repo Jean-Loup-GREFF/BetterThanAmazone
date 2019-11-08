@@ -9,7 +9,7 @@
 
     <div id='searchbox'>
         <h1>Recherche</h1>
-    <form action="SearchProductList.php" method="post"><p>
+    <form action="index.php?chosen_page=SearchProductList.php" method="post"><p>
     Rechercher un produit:
     <input type="text" name="search" class=string placeholder="Licorne volante..."/><br />
 </p>
@@ -70,14 +70,14 @@
 		$searchString = htmlentities($_POST["search"],ENT_QUOTES, "UTF-8");
 		$searchPrice=(int)($_POST["budget"]);
 		$searchCategorieId=htmlentities($_POST["categorie"],ENT_QUOTES, "UTF-8");
-		$productsList=intersectLists( intersectLists( getProductsContainingName($searchString), getProductsByCategorieId($searchCategorieId) ),  getProductsBetweenPrices(0, $searchPrice) ) ;
+		$productsList=intersectLists( intersectLists( getProductsContainingName($searchString),  getCategorieById($searchCategorieId)),  getProductsBetweenPrices(0, $searchPrice) ) ;
 	}
     else{
 		$productsList=getAllProducts();
     }
 	$column=0;
 	foreach($productsList as $product){
-		echo '<TD><p><br/><a id="productname" href="Index.php?id_prod='.$product["id"].'&chosen_page=Product_page.php">'.$product["name"].'</a><br /><br/><img id="imageminiature" "src=src/pictures/"'.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
+		echo '<TD><p><br/><a id="productname" href="Index.php?id_prod='.$product["id"].'&chosen_page=Product_page.php">'.$product["name"].'</a><br /><br/><img id="imageminiature" src="src/pictures/'.$product["image"].'" /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
   	}
 	$column+=1;
 	if ($column%3==0){

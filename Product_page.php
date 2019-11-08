@@ -11,26 +11,35 @@
 <body  id="body_princ">
 
 		<?php
-		  if(isset($_GET["cartproduct"])){
-				if(isset($_GET["quantity"])){
-					addToCart(1,$_GET["cartproduct"],$_GET["quantity"]);
+		#include('connexion.php');
+		  if(isset($_POST["cartproduct"])){
+				if(isset($_POST["quantity"])){
+					addToCart(1,$_POST["cartproduct"],$_POST["quantity"]);
 			  }
 				else {
-					addToCart(1,$_GET["cartproduct"]);
+					addToCart(1,$_POST["cartproduct"]);
 				}
 		  }
-			if(empty($_GET["id_prod"]))
+			if(empty($_POST["id_prod"]) && empty($_GET["id_prod"]))
 			{
 				$id_prod = -1000;
 			}
 			else
 			{
-				$id_prod = $_GET["id_prod"];
+				if (empty($_GET["id_prod"])) 
+				{
+					$id_prod = $_POST["id_prod"];
+				}
+				else 
+				{
+					$id_prod = $_GET["id_prod"];
+				}
 
 				$prod_data = array_slice(getProductById($id_prod),0,1);
 
-				$prod_com = array_slice(getCommentsByProductId($id_prod),0,1);
+			$prod_com = array_slice(getCommentsByProductId($id_prod),0,1);	
 			}
+			
 		?>
 		<section class="information">
 			<article id="zone_image">
@@ -94,7 +103,7 @@
 					?>
 
 				</p>
-				<form method="get" action="Product_page.php">
+				<form method="post" action="index.php?chosen_page=Product_page.php">
      			<input type="text" name="quantity" value="1"/><br />
     			<input type="hidden" name="id_prod" value="<?php echo $id_prod ?>" />
     			<input type="hidden" name="cartproduct" value="<?php echo $id_prod ?>" />

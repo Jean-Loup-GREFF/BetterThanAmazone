@@ -6,8 +6,7 @@
 </head>
 <body>
 	<div id="header">
-		<?php include 'header.php';
-		 include 'connexion.php';
+		<?php 
 		 $user = 1;
 		 $id = array_slice(getCartOrderOfUser($user), 0, 1)[0]["id"];
 		 $cart = getProductsByOrderId($id);
@@ -31,7 +30,6 @@
 		</section>
 	</div>
 	<div id="footer">
-		<?php include 'footer.php'?>
 	</div>
 </body>
 </html>

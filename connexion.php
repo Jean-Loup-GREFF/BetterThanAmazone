@@ -111,8 +111,8 @@
 		{
 			$quantity = $orderProduct[0]["quantity"] + $amount;
 			insertToBDD("UPDATE `order_products` SET `quantity` = \"".$quantity."\" WHERE `id` = \"".$orderProduct[0]["id"]."\"");
-			$price = array_slice(getOrderByID($orderAsCart[0]["id"]))[0]["amount"]+$quantity*$orderProduct[0]["unit_price"];
-			insertToBDD("UPDATE `orders` SET `amount` = \"".$price."\" WHERE `id` = \"".$orderAsCart[0]["id"]."\"");
+			#$price = array_slice(getOrderByID($orderAsCart[0]["id"]))[0]["amount"]+$quantity*$orderProduct[0]["unit_price"];
+			#insertToBDD("UPDATE `orders` SET `amount` = \"".$price."\" WHERE `id` = \"".$orderAsCart[0]["id"]."\"");
 		}
 	}
 
