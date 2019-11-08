@@ -167,6 +167,7 @@
 //	var_dump(getProductsContainingName("esT"));
 //	var_dump(getProductsContainingNameByCategorie("esT", "Main range"));
 
+//var_dump(getProductById(2));
 
 
 //	var_dump(addToCart(2, 3, 2));
