@@ -111,9 +111,43 @@
 		{
 			$quantity = $orderProduct[0]["quantity"] + $amount;
 			insertToBDD("UPDATE `order_products` SET `quantity` = \"".$quantity."\" WHERE `id` = \"".$orderProduct[0]["id"]."\"");
-			#$price = array_slice(getOrderByID($orderAsCart[0]["id"]))[0]["amount"]+$quantity*$orderProduct[0]["unit_price"];
-			#insertToBDD("UPDATE `orders` SET `amount` = \"".$price."\" WHERE `id` = \"".$orderAsCart[0]["id"]."\"");
+			$price = array_slice(getOrderByID($orderAsCart[0]["id"]))[0]["amount"]+$quantity*$orderProduct[0]["unit_price"];
+			insertToBDD("UPDATE `orders` SET `amount` = \"".$price."\" WHERE `id` = \"".$orderAsCart[0]["id"]."\"");
 		}
+	}
+	
+	function getAllCategoriesSubchildById($id)
+	{
+		$categorieList = [$id];
+		$newSubChild = false;
+		for($i = 0; $i < count($categorieList); $i += 1)
+		{
+			$categorieChildList = getCategoriesChildByCategorieId($categorieList[$i]);
+			$categorieChildList = array_slice($categorieChildList, 0, count($categorieChildList));
+			if(count($categorieChildList) > 0)
+			{
+				$newSubChild = true;
+				for($j = 0; $j < count($categorieChildList); $j += 1)
+				{
+					array_push($categorieList, (int)$categorieChildList[$j]["id"]);
+				}
+			}
+		}
+		return $categorieList;
+	}
+	
+	function getProductOfMotherAndChildCategoryById($id)
+	{
+		$rangeList = getAllCategoriesSubchildById($id);
+		$rangeList = array_slice($rangeList, 0, count($rangeList));
+		$productList = array();
+		for($i = 0; $i < count($rangeList); $i += 1)
+		{
+			$partProductList = getProductsByCategorieId($rangeList[$i]);
+			$partProductList = array_slice($partProductList, 0, count($partProductList));
+			$productList = array_merge($productList, $partProductList);
+		}
+		return $productList;
 	}
 
 	function createAddress($humanName, $address_one, $address_two, $postal_code, $city, $country)
@@ -173,5 +207,7 @@
 //	var_dump(addToCart(2, 3, 2));
 //	var_dump(addToCart(3, 2, 3));
 //	echo createAddress("Bobby Bob", "123 rue du trou", "Chez mamie", "59000", "Lille", "FRANCE");
+
+//	var_dump(getProductOfMotherAndChildCategoryById(2));
 
 ?>

@@ -15,7 +15,7 @@
 </p>
     <p>
 
-    <label for="budget">Votre budget:</label>
+    <label for="budget">Votre budget maximum:</label>
 	<input type="number" name="budget" id="budget" value=50 />
 	<?php
 	/*
@@ -70,7 +70,7 @@
 		$searchString = htmlentities($_POST["search"],ENT_QUOTES, "UTF-8");
 		$searchPrice=(int)($_POST["budget"]);
 		$searchCategorieId=htmlentities($_POST["categorie"],ENT_QUOTES, "UTF-8");
-		$productsList=intersectLists( intersectLists( getProductsContainingName($searchString),  getProductsByCategorieId($searchCategorieId)),  getProductsBetweenPrices(0, $searchPrice) ) ;
+		$productsList=intersectLists( intersectLists( getProductsContainingName($searchString),  getProductOfMotherAndChildCategoryById($searchCategorieId)),  getProductsBetweenPrices(0, $searchPrice) ) ;
 	}
     else{
 		$productsList=getAllProducts();
