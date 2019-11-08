@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include('connexion.php');
 ?>
 <?php
@@ -23,9 +22,13 @@
 		
 
 		<?php
-			if(empty($_GET))
+			if(empty($_GET)||$_GET["chosen_page"]=='SearchProductList.php')
 			{
-				include('SearchProductList.php');
+				include("SearchProductList.php");
+			}
+			else
+			{
+				include($_GET["chosen_page"]);
 			}
 			include('footer.php');
 		?>
