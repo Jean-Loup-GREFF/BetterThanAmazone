@@ -25,9 +25,9 @@
 		
 
 		<?php
-			if(empty($_GET)||$_GET["chosen_page"]=='SearchProductList.php')
+			if(empty($_GET)||$_GET["chosen_page"]=='Home.php')
 			{
-				include('SearchProductList.php');
+				include('Home.php');
 			}
 			else
 			{
