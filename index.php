@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	include('connexion.php');
+?>
+<?php
+	$_SESSION["isConnected"] = false;
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
