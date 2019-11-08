@@ -2,7 +2,10 @@
 	include('connexion.php');
 ?>
 <?php
-	$_SESSION["isConnected"] = false;
+	if(isset($_SESSION["isConnected"]) == false)
+	{
+		$_SESSION["isConnected"] = false;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,7 @@
 		<?php
 			if(empty($_GET)||$_GET["chosen_page"]=='SearchProductList.php')
 			{
-				include("SearchProductList.php");
+				include('SearchProductList.php');
 			}
 			else
 			{
