@@ -70,7 +70,7 @@
 		$searchString = htmlentities($_POST["search"],ENT_QUOTES, "UTF-8");
 		$searchPrice=(int)($_POST["budget"]);
 		$searchCategorieId=htmlentities($_POST["categorie"],ENT_QUOTES, "UTF-8");
-		$productsList=intersectLists( intersectLists( getProductsContainingName($searchString),  getCategorieById($searchCategorieId)),  getProductsBetweenPrices(0, $searchPrice) ) ;
+		$productsList=intersectLists( intersectLists( getProductsContainingName($searchString),  getProductsByCategorieId($searchCategorieId)),  getProductsBetweenPrices(0, $searchPrice) ) ;
 	}
     else{
 		$productsList=getAllProducts();
