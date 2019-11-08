@@ -17,7 +17,7 @@
 
 .menu_reference 
 {
-  display: block;
+  display: inline-block;
   color: black;
   background:rgb(211, 181, 105);
   text-align: center;

@@ -5,9 +5,26 @@
 	<link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
 </head>
 <body>
+	<?php
+	if(empty($_GET["chosen_page"]) or !isset($_SESSION["isConnected"]))
+	{
+		ob_start();
+		header('Location: index.php');
+		ob_end_flush();
+		exit();
+	}
+	?>
+	
 	<div id="header">
-		<?php 
-		 $user = 1;
+		<?php
+		if($_SESSION["isConnected"] == false)
+		{
+			ob_start();
+			header('Location: index.php');
+			ob_end_flush();
+			exit();
+		}
+		$user = $_SESSION["userID"];
 		 $id = array_slice(getCartOrderOfUser($user), 0, 1)[0]["id"];
 		 $cart = getProductsByOrderId($id);
 		 ?>

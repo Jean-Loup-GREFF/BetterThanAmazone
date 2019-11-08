@@ -1,14 +1,14 @@
 <?php
 
-	$bdd = new PDO('mysql:host=localhost;dbname=bamazone','root', '');
+	$database = new PDO('mysql:host=localhost;dbname=bamazone','root', '');
 
 
 	function insertToBDD($request)
 	{
-		//$response = $GLOBALS["bdd"]->exec($request);
-		$response = $GLOBALS["bdd"]->exec($request);
+		//$response = $GLOBALS["database"]->exec($request);
+		$response = $GLOBALS["database"]->exec($request);
 
-		$last_id = $GLOBALS["bdd"]->lastInsertId();
+		$last_id = $GLOBALS["database"]->lastInsertId();
 
 		echo $last_id;
 
@@ -17,7 +17,7 @@
 	function getFromRequest($request, $parameterList)
 	{
 		$list = array();
-		$response = $GLOBALS["bdd"]->query($request);
+		$response = $GLOBALS["database"]->query($request);
 		$i = 0;
 		while($result = $response->fetch())
 		{

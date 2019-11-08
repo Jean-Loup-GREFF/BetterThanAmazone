@@ -4,7 +4,15 @@
     
 </head>
 <body >
-
+	<?php
+	if(empty($_GET["chosen_page"]) or !isset($_SESSION["isConnected"]))
+	{
+		ob_start();
+		header('Location: index.php');
+		ob_end_flush();
+		exit();
+	}
+	?>
 
 
     <div id='searchbox'>

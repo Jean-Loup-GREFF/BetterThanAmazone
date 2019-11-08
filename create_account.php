@@ -10,7 +10,22 @@
 	<br>
 <body id='accountbody'>
 	<header>
-
+	<?php
+		if(empty($_GET["chosen_page"]) or !isset($_SESSION["isConnected"]))
+		{
+			ob_start();
+			header('Location: index.php');
+			ob_end_flush();
+			exit();
+		}
+		if($_SESSION["isConnected"] == true)
+		{
+			ob_start();
+			header('Location: index.php');
+			ob_end_flush();
+			exit();
+		}
+	?>
 	</header>
 
 	<div class="InscriptionBody">

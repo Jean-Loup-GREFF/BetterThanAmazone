@@ -10,6 +10,16 @@
 
 <body  id="body_princ">
 
+	<?php
+	if(empty($_GET["chosen_page"]) or !isset($_SESSION["isConnected"]))
+	{
+		ob_start();
+		header('Location: index.php');
+		ob_end_flush();
+		exit();
+	}
+	?>
+
 		<?php
 		#include('connexion.php');
 		  if(isset($_POST["cartproduct"])){

@@ -8,25 +8,16 @@
 	<header>
 
 	</header>
-	
 	<?php
-	
-	if(!empty($_POST["pseudo"]))
+	if(empty($_GET["chosen_page"]) or !isset($_SESSION["isConnected"]))
 	{
-		$user = array_slice(getUserByUsernameAndPassword($_POST["pseudo"], $_POST["password"]), 0, 1);
-		//Wrong username of password (maybe not subscribed yet
-		if(count($user) == 0)
-		{
-			echo("<br> <h1 id='titlegeneral'>ERREUR DE MOT DE PASSE OU DE NOM DE COMPTE, HACKEUR!!!!</h1> <br>");
-		}
-		else if(count($user) == 1)
-		{
-			$_SESSION["userID"] = $user[0]["id"];
-			$_SESSION["username"] = $user[0]["username"];
-			$_SESSION["isConnected"] = true;
-		}
+		ob_start();
+		header('Location: index.php');
+		ob_end_flush();
+		exit();
 	}
-
+	?>
+	<?php
 	
 	if($_SESSION["isConnected"] == false)
 	{
@@ -39,7 +30,7 @@
 		<br>
 		<br>
 		<form id='accountform' method='POST'>
-			<input class=\"InscriptionField\" type=\"text\" name=\"pseudo\" placeholder=\"Pseudo\"><br><br>
+			<input class=\"InscriptionField\" type=\"text\" name=\"username\" placeholder=\"Pseudo\"><br><br>
 
 			<input class=\"InscriptionField\" type=\"password\" name=\"password\" placeholder=\"Password\"><br><br>
 
@@ -50,8 +41,10 @@
 	}
 	else
 	{
-		echo "Vous êtes déjà connecté!!!";
-		echo "Bonjour, ".$_SESSION["username"]." !";
+		ob_start();
+		header('Location: index.php');
+		ob_end_flush();
+		exit();
 	}
 	
 	?>
