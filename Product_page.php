@@ -3,10 +3,7 @@
 <head>
 	<title>Product Page</title>
 	<link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
-	<?php
-			include('header.php');
-			include('connexion.php')
-		?>
+	
 	<link rel="stylesheet" href="style_web_site_complet.css" />
 </head>
 
@@ -132,8 +129,5 @@
 
 		</section>
 
-		<?php
-			include('footer.php');
-		?>
 </body>
 </html>

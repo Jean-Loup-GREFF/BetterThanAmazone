@@ -1,10 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="src/CSS/style_web_site_complet.css" />
-    <?php
-            include('header.php');
-            include("connexion.php")
-		?>
+    
 </head>
 <body >
 
@@ -80,7 +77,7 @@
     }
 	$column=0;
 	foreach($productsList as $product){
-		echo '<TD><p><br/><a id="productname" href="Product_page.php?id_prod='.$product["id"].'">'.$product["name"].'</a><br /><br/><img id="imageminiature" "src=src/pictures/"'.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
+		echo '<TD><p><br/><a id="productname" href="Index.php?id_prod='.$product["id"].'&chosen_page=Product_page.php">'.$product["name"].'</a><br /><br/><img id="imageminiature" "src=src/pictures/"'.$product["image"].' /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
   	}
 	$column+=1;
 	if ($column%3==0){
@@ -96,9 +93,7 @@
 </body>
 
 
-<footer><?php
-			include('footer.php');
-		?></footer>
+<footer></footer>
 
 
 </html>
