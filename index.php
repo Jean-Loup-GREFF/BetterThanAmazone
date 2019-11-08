@@ -3,7 +3,10 @@
 	include('connexion.php');
 ?>
 <?php
-	$_SESSION["isConnected"] = false;
+	if(isset($_SESSION["isConnected"]) == false)
+	{
+		$_SESSION["isConnected"] = false;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,7 @@
 		<?php
 			if(empty($_GET))
 			{
-				include('SearchProductList.php');
+				include('connect.php');
 			}
 			include('footer.php');
 		?>
