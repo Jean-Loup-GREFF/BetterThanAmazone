@@ -10,7 +10,7 @@
 
 		$last_id = $GLOBALS["database"]->lastInsertId();
 
-		echo $last_id;
+		//echo $last_id;
 
 		return $last_id;
 	}
@@ -62,8 +62,10 @@
 	function getUserByUsername($username) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserByUsernameAndPassword($username, $password) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\" AND `u`.`password` = \"".$password."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserById($userId) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`id` = \"".$userId."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getUserByEmail($userMail) {return getFromRequest("SELECT * FROM `users` WHERE `email` = \"".$userMail."\"",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 
 	function getAddressById($addressId) { return getFromRequest("SELECT `a`.* FROM `user_addresses` `a` WHERE `a`.`id` = \"".$addressId."\"", ["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
+	function getIdByAddress($pseudo,$address1,$address2,$postal_code,$city){return getFromRequest("SELECT * FROM `user_addresses` `ua` WHERE `ua`.`human_name`='".$pseudo."' AND `ua`.`address_one`='".$address1."' AND `ua`.`address_two`='".$address2."' AND `ua`.`postal_code`='".$postal_code."' AND `ua`.`city`='".$city."';",["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
 
 	function getAllProducts() {return getFromRequest("SELECT * FROM `products`", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
 	function getProductsBetweenPrices($inferiorPrice, $superiorPrice) {return getFromRequest("SELECT `p`.* FROM `products` `p` WHERE `p`.`unit_price` >= \"".$inferiorPrice."\" AND `p`.`unit_price` <= \"".$superiorPrice."\"", ["id", "name", "image", "description", "supplier", "unit_price", "range_id", "created_at", "updated_at"]);}
@@ -165,9 +167,13 @@
 	}
 
 
-	function createAccount($firstName, $lastName, $username, $color, $email, $password, $passwordAgain)
+	function createAccount($firstName, $lastName, $username, $color, $email, $password, $passwordAgain,$address1,$address2,$postalcode,$city)
 	{
 		if(count(getUserByUsername($username)) > 0)
+		{
+			return "ERROR, username already taken!";
+		}
+		if(count(getUserByEmail($email)) > 0)
 		{
 			return "ERROR, username already taken!";
 		}
@@ -175,7 +181,23 @@
 		{
 			return "ERROR, the passwords are not the same!";
 		}
-		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`) VALUES (\"".$firstName."\", \"".$lastName."\", \"".$username."\", \"".$color."\", \"".$email."\", \"".$password."\")");
+		createAddress($username,$address1,$address2,$postalcode,$city,"FRANCE");
+		$address = array_slice(getIdByAddress($username,$address1,$address2,$postalcode,$city),0,1);
+		$idAddress = $address[0]["id"];
+		echo "INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$idAddress')";
+		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$idAddress')");
+	}
+
+	function getCount($request)
+	{
+		$list;
+		$response = $GLOBALS["database"]->query($request);
+		while($result = $response->fetch())
+		{
+			$list = $result;
+		}
+		$response->closeCursor();
+		return $list;
 	}
 
 //	var_dump(getCategoriesChildByCategorieId(2));
