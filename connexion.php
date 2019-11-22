@@ -61,6 +61,7 @@
 	function getAllUsers() {return getFromRequest("SELECT * FROM `users`", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserByUsername($username) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserByUsernameAndPassword($username, $password) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\" AND `u`.`password` = \"".$password."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getUserByEmailAndPassword($mail, $password) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`email` = \"".$mail."\" AND `u`.`password` = \"".$password."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserById($userId) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`id` = \"".$userId."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserByEmail($userMail) {return getFromRequest("SELECT * FROM `users` WHERE `email` = \"".$userMail."\"",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 
@@ -113,7 +114,7 @@
 		{
 			$quantity = $orderProduct[0]["quantity"] + $amount;
 			insertToBDD("UPDATE `order_products` SET `quantity` = \"".$quantity."\" WHERE `id` = \"".$orderProduct[0]["id"]."\"");
-			$price = array_slice(getOrderByID($orderAsCart[0]["id"]))[0]["amount"]+$quantity*$orderProduct[0]["unit_price"];
+			$price = array_slice(getOrderByID($orderAsCart[0]["id"]),0,1)[0]["amount"]+$quantity*$orderProduct[0]["unit_price"];
 			insertToBDD("UPDATE `orders` SET `amount` = \"".$price."\" WHERE `id` = \"".$orderAsCart[0]["id"]."\"");
 		}
 	}
@@ -184,7 +185,6 @@
 		createAddress($username,$address1,$address2,$postalcode,$city,"FRANCE");
 		$address = array_slice(getIdByAddress($username,$address1,$address2,$postalcode,$city),0,1);
 		$idAddress = $address[0]["id"];
-		echo "INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$idAddress')";
 		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$idAddress')");
 	}
 

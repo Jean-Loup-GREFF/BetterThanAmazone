@@ -11,16 +11,23 @@
 	//Connexion handler
 	if(!empty($_POST["username"]))
 	{
-		$user = array_slice(getUserByUsernameAndPassword($_POST["username"], $_POST["password"]), 0, 1);
+		$userP = array_slice(getUserByUsernameAndPassword($_POST["username"], $_POST["password"]), 0, 1);
+		$userE = array_slice(getUserByEmailAndPassword($_POST["username"], $_POST["password"]), 0, 1);
 		//Wrong username of password (maybe not subscribed yet)
-		if(count($user) == 0)
+		if(count($userP) == 0 and count($userE) == 0)
 		{
 			echo("<br> <h1 id='titlegeneral'>ERREUR DE MOT DE PASSE OU DE NOM DE COMPTE, HACKEUR!!!!</h1> <br>");
 		}
-		else if(count($user) == 1)
+		else if(count($userP) == 1)
 		{
-			$_SESSION["userID"] = $user[0]["id"];
-			$_SESSION["username"] = $user[0]["username"];
+			$_SESSION["userID"] = $userP[0]["id"];
+			$_SESSION["username"] = $userP[0]["username"];
+			$_SESSION["isConnected"] = true;
+		}
+		else if(count($userE) == 1)
+		{
+			$_SESSION["userID"] = $userE[0]["id"];
+			$_SESSION["username"] = $userE[0]["username"];
 			$_SESSION["isConnected"] = true;
 		}
 	}
