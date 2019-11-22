@@ -28,7 +28,19 @@
 		
 		if(isset($_POST["deleteproduct"])){
 			$cartOrder = array_slice(getCartOrderOfUser($_SESSION["userID"]), 0, 1);
-			$productOrder = array_slice(getOrderProductOfOrderAndSpecificProduct($cartOrder[0]["id"], $_POST["deleteproduct"]), 0, 1);
+			$userInfo = array_slice(getUserById($user), 0, 1);
+			if(Count($cartOrder) > 0 && Count($userInfo))
+			{
+				insertToBDD("UPDATE`orders` SET type`=`ORDER`,`status`=`WAIT_FOR_BILL` WHERE `id`=\"".$cartOrder["id"]."\"");
+				insertToBDD("INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`)"." VALUES (\"".$user."\", \"CART\", \"CART\", \"0\", \"".$userInfo[0]["billing_adress_id"]."\", \"".$userInfo[0]["delivery_adress_id"]."\")");
+			}
+		}
+		
+		if(isset($_POST["validateCart"])){
+			$cartOrder = array_slice(getCartOrderOfUser($_SESSION["userID"]), 0, 1);
+			
+			
+			
 			if(Count($productOrder) > 0)
 			{
 				if(isset($_POST["deletionQuantity"])){
@@ -61,7 +73,7 @@
 						<td><img src="src/pictures/<?php echo $value["image"];?>" id="cart" widht=200 height="300"></td>
 						<td><p id='cart'><?php echo $value["name"];?><br />
 						<form action="" method="post">
-							<button type="submit" name="deleteproduct" value=2 >Supprimer</button>
+							<button type="submit" name="deleteproduct" value=<?php echo $value["id"];?> >Supprimer</button>
 						</form>
 						<td>Quantity: <?php echo $value["quantity"];?></td>
 						<td><?php echo $value["unit_price"]*$value["quantity"];?></td>
@@ -70,6 +82,10 @@
 				</table>
 			</div>
 		</section>
+		
+		<form action="" method="post">
+			<button type="submit" name="validateCart" value=true >Commander</button>
+		</form>
 	</div>
 	<div id="footer">
 	</div>
