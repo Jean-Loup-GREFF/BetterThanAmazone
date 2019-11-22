@@ -63,7 +63,7 @@
 		<input class="InscriptionNameField" type="text" name="name" <?php if(isset($_POST["name"])){echo "value=\"".$_POST["name"]."\"";}else{echo "placeholder=\"Name\"";} ?> ><br><br>
 		<?php
 			if(isset($_POST["email"])){
-				$c = getCount("SELECT COUNT(`email`) AS `c` FROM `users` WHERE `username` = '".$_POST["email"]."';");
+				$c = getCount("SELECT COUNT(`email`) AS `c` FROM `users` WHERE `email` = '".$_POST["email"]."';");
 				if($c["c"] != "0"){echo "<p>This email is already used</p></ br>";}
 			}
 		?>
