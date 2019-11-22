@@ -190,9 +190,9 @@
 		}
 		createAddress($username,$address1,$address2,$postalcode,$city,"FRANCE");
 		$address = array_slice(getIdByAddress($username,$address1,$address2,$postalcode,$city),0,1)[0]["id"];
-		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$address')");
+		insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$address')");
 		$user = array_slice(getIdByUser($username),0,1)[0]["id"];
-		return insertToBDD("INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`) VALUES ('$username', 'CART','CART','0', '$adress')");
+		return insertToBDD("INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`) VALUES ('$user', 'CART','CART','0', '$address')");
 	}
 
 	function getCount($request)
