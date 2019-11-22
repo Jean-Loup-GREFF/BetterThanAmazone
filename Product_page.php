@@ -113,12 +113,14 @@
 					?>
 
 				</p>
+				<?php if($_SESSION["isConnected"] == true){ ?>
 				<form method="post" action="index.php?chosen_page=Product_page.php">
      			<input type="text" name="quantity" value="1"/><br />
     			<input type="hidden" name="id_prod" value="<?php echo $id_prod ?>" />
     			<input type="hidden" name="cartproduct" value="<?php echo $id_prod ?>" />
       		<input type="submit" value="Ajouter au panier" id="ajout_panier">
 				</form>
+				<?php } ?>
 			</aside>
 			<aside>
 
