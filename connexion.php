@@ -108,6 +108,8 @@
 			{
 				return "ERROR, Can't add a new order_product";
 			}
+			$price = array_slice(getOrderByID($orderAsCart[0]["id"]), 0, 1)[0]["amount"]+$amount*$product[0]["unit_price"];
+			insertToBDD("UPDATE `orders` SET `amount` = \"".$price."\" WHERE `id` = \"".$orderAsCart[0]["id"]."\"");
 		}
 		else
 		{

@@ -24,10 +24,10 @@
 		#include('connexion.php');
 		  if(isset($_POST["cartproduct"])){
 				if(isset($_POST["quantity"])){
-					addToCart(1,$_POST["cartproduct"],$_POST["quantity"]);
+					addToCart($_SESSION["userID"],$_POST["cartproduct"],$_POST["quantity"]);
 			  }
 				else {
-					addToCart(1,$_POST["cartproduct"]);
+					addToCart($_SESSION["userID"],$_POST["cartproduct"]);
 				}
 		  }
 			if(empty($_POST["id_prod"]) && empty($_GET["id_prod"]))
