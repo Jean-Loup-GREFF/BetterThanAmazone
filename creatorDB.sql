@@ -2,8 +2,8 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  ven. 22 nov. 2019 à 15:30
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  ven. 22 nov. 2019 à 16:11
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -43,15 +43,16 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `IDX_user_billing_adress` (`billing_adress_id`),
   KEY `IDX_user_delivery_adress` (`delivery_adress_id`),
   KEY `IDX_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 'CART', 'CART', 435075000, 1, 2, '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
-(2, 2, 'ORDER', 'BILLED', 16000000, 3, 4, '2019-11-08 13:30:05', '2019-11-08 13:30:05');
+(1, 1, 'CART', 'CART', 8030000, 1, 2, '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
+(2, 2, 'CART', 'CART', 16000000, 3, 4, '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
+(3, 3, 'CART', 'CART', 0, 5, 5, '2019-11-22 17:06:24', '2019-11-22 17:06:24');
 
 -- --------------------------------------------------------
 
@@ -110,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `order_products` (
 --
 
 INSERT INTO `order_products` (`id`, `order_id`, `product_id`, `quantity`, `unit_price`, `rating`, `comment`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 10007, 8000000, NULL, 'tres amical', '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
-(2, 1, 2, 29005, 15000, NULL, 'tres dangereux', '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
+(1, 1, 1, 1, 8000000, NULL, 'tres amical', '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
+(2, 1, 2, 2, 15000, NULL, 'tres dangereux', '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
 (3, 2, 1, 2, 8000000, NULL, NULL, '2019-11-08 13:30:05', '2019-11-08 13:30:05');
 
 -- --------------------------------------------------------
@@ -230,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`, `delivery_adress_id`, `created_at`, `updated_at`) VALUES
 (1, '', '', 'Fred Eric', 0, 'fred.eric@example.com', 'password', 1, 2, '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
 (2, '', '', 'Frederic', 0, 'frederic@example.com', 'password', 3, 4, '2019-11-08 13:30:05', '2019-11-08 13:30:05'),
-(3, 'Gabriel', 'Desmullier', 'Gabriel', 0, 'gabriel.desmullier@gmail.com', 'gabriel', 5, NULL, '2019-11-22 13:30:14', '2019-11-22 13:30:14');
+(3, 'Gabriel', 'Desmullier', 'Gabriel', 0, 'gabriel.desmullier@gmail.com', 'gabriel', 5, 5, '2019-11-22 13:30:14', '2019-11-22 13:30:14');
 
 -- --------------------------------------------------------
 
