@@ -67,8 +67,8 @@
 				if($c["c"] != "0"){echo "<p>This email is already used</p></ br>";}
 			}
 		?>
-		<input class="InscriptionField" type="text" name="email" <?php if(isset($_POST["email"])){echo "value=\"".$_POST["email"]."\"";}else{echo "placeholder=\"E-mail address\"";} ?> ><br><br>
-		<input class="InscriptionField" type="tel" name="phone" <?php if(isset($_POST["phone"])){echo "value=\"".$_POST["phone"]."\"";}else{echo "placeholder=\"Phone number\"";} ?>  pattern="[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}" required><br><br>
+		<input class="InscriptionField" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" <?php if(isset($_POST["email"])){echo "value=\"".$_POST["email"]."\"";}else{echo "placeholder=\"E-mail address\"";} ?> ><br><br>
+		<input class="InscriptionField" type="tel" name="phone" <?php if(isset($_POST["phone"])){echo "value=\"".$_POST["phone"]."\"";}else{echo "placeholder=\"Phone number\"";} ?>   required><br><br>
 		<input class="InscriptionField" type="text" name="address1" <?php if(isset($_POST["address1"])){echo "value=\"".$_POST["address1"]."\"";}else{echo "placeholder=\"Street, number...\"";} ?> ><br><br>
 		<input class="InscriptionField" type="text" name="address2" <?php if(isset($_POST["address2"])){echo "value=\"".$_POST["address2"]."\"";}else{echo "placeholder=\"Appartement number...\"";} ?> ><br><br>
 		<input class="InscriptionField" type="text" name="postalCode" <?php if(isset($_POST["postalCode"])){echo "value=\"".$_POST["postalCode"]."\"";}else{echo "placeholder=\"75000\"";} ?> pattern="[0-9]{5}"><br><br>
