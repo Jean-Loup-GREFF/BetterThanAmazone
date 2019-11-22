@@ -62,7 +62,6 @@
 	function getUserByUsernameAndPassword($username, $password) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\"  AND `u`.`password` = \"".$password."\" ", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserById($userId) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`id` = \"".$userId."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserByEmail($userMail) {return getFromRequest("SELECT * FROM `users` WHERE `email` = \"".$userMail."\"",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
-	function getIdByUser($username){return getFromRequest("SELECT * FROM `users` WHERE `username` = \"".$username."\"",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 
 	function getAddressById($addressId) { return getFromRequest("SELECT `a`.* FROM `user_addresses` `a` WHERE `a`.`id` = \"".$addressId."\"", ["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
 	function getIdByAddress($pseudo,$address1,$address2,$postal_code,$city){return getFromRequest("SELECT * FROM `user_addresses` `ua` WHERE `ua`.`human_name`='".$pseudo."' AND `ua`.`address_one`='".$address1."' AND `ua`.`address_two`='".$address2."' AND `ua`.`postal_code`='".$postal_code."' AND `ua`.`city`='".$city."';",["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
@@ -116,7 +115,7 @@
 			$quantity = $orderProduct[0]["quantity"] + $amount;
 			if($quantity <= 0)
 			{
-				insertToBDD("DELETE FROM `order_products` `op` WHERE `op`.`order_id` = \"".$$orderProduct[0]["id"]."\"");
+				insertToBDD("DELETE FROM `order_products` WHERE `id` = \"".$orderProduct[0]["id"]."\"");
 			}
 			else
 			{

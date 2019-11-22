@@ -86,12 +86,13 @@
 	$column=0;
 	foreach($productsList as $product){
 		echo '<TD><p><br/><a id="productname" href="Index.php?id_prod='.$product["id"].'&chosen_page=Product_page.php">'.$product["name"].'</a><br /><br/><img id="imageminiature" src="src/pictures/'.$product["image"].'" /><br /><img id="etoiles" src="src/pictures/5etoiles.png" /><br/> '.$product["unit_price"].' euros<br/><br/> </p></TD>';
+		$column+=1;
+		if ($column%3==0){
+			echo '</TR><TR>';
+			$column=0;
+		}
   	}
-	$column+=1;
-	if ($column%3==0){
-		echo '</TR><TR>';
-		$column=0;
-	}
+
 ?>
 </TR>
 </TABLE>
