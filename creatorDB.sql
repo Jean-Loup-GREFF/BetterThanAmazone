@@ -118,7 +118,7 @@ INSERT INTO `user_addresses` (`human_name`, `address_one`, `address_two`, `posta
 INSERT INTO `user_addresses` (`human_name`, `address_one`, `address_two`, `postal_code`, `city`, `country`)
   VALUES ('Frederic', '239 rue de Douai', null, '59000', 'Lille', 'FRANCE');
 INSERT INTO `user_addresses` (`human_name`, `address_one`, `address_two`, `postal_code`, `city`, `country`)
-  VALUES ('Epicfred', '3 sans idée','oui oui', '59000', 'Lille', 'FRANCE');
+  VALUES ('Ericfred', '3 sans idée','oui oui', '59000', 'Lille', 'FRANCE');
 
 INSERT INTO `users` (username, email, password, billing_adress_id, delivery_adress_id)
   VALUES ('Fred Eric', 'fred.eric@example.com','password',1,2);

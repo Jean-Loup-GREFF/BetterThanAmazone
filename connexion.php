@@ -61,7 +61,8 @@
 	function getUserByEmailAndPassword($mail, $password) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`email` = \"".$mail."\"  AND `u`.`password` = \"".$password."\" ", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);} 
 	function getUserByUsernameAndPassword($username, $password) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`username` = \"".$username."\"  AND `u`.`password` = \"".$password."\" ", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 	function getUserById($userId) { return getFromRequest("SELECT `u`.* FROM `users` `u` WHERE `u`.`id` = \"".$userId."\"", ["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
-	function getUserByEmail($userMail) {return getFromRequest("SELECT * FROM `users` WHERE `email` = \"".$userMail."\" ",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getUserByEmail($userMail) {return getFromRequest("SELECT * FROM `users` WHERE `email` = \"".$userMail."\"",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
+	function getIdByUser($username){return getFromRequest("SELECT * FROM `users` WHERE `username` = \"".$username."\"",["id", "firstname", "lastname", "username", "color", "email", "billing_adress_id", "delivery_adress_id", "created_at", "updated_at"]);}
 
 	function getAddressById($addressId) { return getFromRequest("SELECT `a`.* FROM `user_addresses` `a` WHERE `a`.`id` = \"".$addressId."\"", ["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
 	function getIdByAddress($pseudo,$address1,$address2,$postal_code,$city){return getFromRequest("SELECT * FROM `user_addresses` `ua` WHERE `ua`.`human_name`='".$pseudo."' AND `ua`.`address_one`='".$address1."' AND `ua`.`address_two`='".$address2."' AND `ua`.`postal_code`='".$postal_code."' AND `ua`.`city`='".$city."';",["id", "human_name", "address_one", "address_two", "postal_code", "city", "country", "created_at", "updated_at"]);}
@@ -188,9 +189,10 @@
 			return "ERROR, the passwords are not the same!";
 		}
 		createAddress($username,$address1,$address2,$postalcode,$city,"FRANCE");
-		$address = array_slice(getIdByAddress($username,$address1,$address2,$postalcode,$city),0,1);
-		$idAddress = $address[0]["id"];
-		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$idAddress')");
+		$address = array_slice(getIdByAddress($username,$address1,$address2,$postalcode,$city),0,1)[0]["id"];
+		return insertToBDD("INSERT INTO `users` (`firstname`, `lastname`, `username`, `color`, `email`, `password`, `billing_adress_id`) VALUES ('$firstName', '$lastName', '$username', '$color', '$email', '$password','$address')");
+		$user = array_slice(getIdByUser($username),0,1)[0]["id"];
+		return insertToBDD("INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`) VALUES ('$username', 'CART','CART','0', '$adress')");
 	}
 
 	function getCount($request)
