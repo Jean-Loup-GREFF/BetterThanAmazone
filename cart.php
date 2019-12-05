@@ -68,6 +68,11 @@
 			<div id="items">
 				<table>
 					<caption><h2 id='titlegeneral'>Your Cart</h2></caption>
+					<?php if(count($cart) == 0){ ?>
+						<tr>
+							<td><p id='cart'>Your Cart is empty</p></td>
+						</tr>
+					<?php } ?>
 					<?php foreach ($cart as $value) {?>
 					<tr>
 						<td><img src="src/pictures/<?php echo $value["image"];?>" id="cart" widht=200 height="300"></td>
