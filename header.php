@@ -5,6 +5,7 @@
 	<? // This style was added since it doesn't work from the stylesheet direcly. ?>
 	
 	 <style type="text/css">
+    <? // This style was added since it doesn't work from the stylesheet direcly. ?>
     #connection{
       padding: 12px 20px;
       margin: 8px 0;
@@ -17,6 +18,7 @@
       padding: 16px 16px;
       margin: 16px 16px;
     }
+    <? // This style was added since it doesn't work from the stylesheet direcly. ?>
     #menu_connected
     {
       box-sizing: border-box;
@@ -32,6 +34,10 @@
       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
   </style>
+
+  <? // This style was added since it doesn't work from the stylesheet direcly. 
+     // Please take care of this comment
+  ?>
 	
 	
       <p><img id='imagebanderole' src='src/pictures/imageacheter.png' /></p>
