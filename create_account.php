@@ -29,11 +29,22 @@
 	</header>
 
 	<?php
-	
+	$error = false;
+		if(isset($_POST["pseudo"])){
+			$c = getCount("SELECT COUNT(`username`) AS `c` FROM `users` WHERE `username` = '".$_POST["pseudo"]."';");
+			if($c["c"] != "0"){$error = true;}
+		}
+		if(isset($_POST["email"])){
+				$c = getCount("SELECT COUNT(`email`) AS `c` FROM `users` WHERE `email` = '".$_POST["email"]."';");
+				if($c["c"] != "0"){$error = true;}
+		}
 		$address2 = "";
 		if(isset($_POST["address2"])){$address2 = $_POST["address2"];}
 		if(isset($_POST["pseudo"]) and isset($_POST["password"]) and isset($_POST["password_two"]) and isset($_POST["surname"]) and isset($_POST["name"]) and isset($_POST["email"]) and isset($_POST["phone"]) and isset($_POST["address1"]) and isset($_POST["postalCode"]) and isset($_POST["city"])) {
 			createAccount($_POST["surname"], $_POST["name"], $_POST["pseudo"], 0, $_POST["email"], $_POST["password"], $_POST["password_two"],$_POST["address1"], $address2, $_POST["postalCode"], $_POST["city"]);
+		}
+		else{
+			$error = true;
 		}
 	?>
 
@@ -46,10 +57,7 @@
 
 	<form id='accountform' method="post" action="index.php?&chosen_page=create_account.php">
 		<?php
-		if(isset($_POST["pseudo"])){
-			$c = getCount("SELECT COUNT(`username`) AS `c` FROM `users` WHERE `username` = '".$_POST["pseudo"]."';");
-			if($c["c"] != "0"){echo "<p>This pseudo is already used</p></ br>";}
-		}
+		if(isset($_POST["pseudo"])){echo "<p>There is an error in your formular.</ br>Please use another pseudo or/and an another email</p>";}
 		?>
 		<input class="InscriptionField" type="text" name="pseudo" <?php if(isset($_POST["pseudo"])){echo "value=\"".$_POST["pseudo"]."\"";}else{echo "placeholder=\"Pseudo\"";} ?> ><br><br>
 		<?php
@@ -61,12 +69,7 @@
 		<input class="InscriptionField" type="password" name="password_two" <?php if(isset($_POST["password_two"])){echo "value=\"".$_POST["password_two"]."\"";}else{echo "placeholder=\"Write your password again\"";} ?> ><br><br>
 		<input class="InscriptionNameField" type="text" name="surname" <?php if(isset($_POST["surname"])){echo "value=\"".$_POST["surname"]."\"";}else{echo "placeholder=\"Surname\"";} ?> >
 		<input class="InscriptionNameField" type="text" name="name" <?php if(isset($_POST["name"])){echo "value=\"".$_POST["name"]."\"";}else{echo "placeholder=\"Name\"";} ?> ><br><br>
-		<?php
-			if(isset($_POST["email"])){
-				$c = getCount("SELECT COUNT(`email`) AS `c` FROM `users` WHERE `email` = '".$_POST["email"]."';");
-				if($c["c"] != "0"){echo "<p>This email is already used</p></ br>";}
-			}
-		?>
+
 		<input class="InscriptionField" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" <?php if(isset($_POST["email"])){echo "value=\"".$_POST["email"]."\"";}else{echo "placeholder=\"E-mail address\"";} ?> ><br><br>
 		<input class="InscriptionField" type="tel" name="phone" <?php if(isset($_POST["phone"])){echo "value=\"".$_POST["phone"]."\"";}else{echo "placeholder=\"Phone number\"";} ?>   required><br><br>
 		<input class="InscriptionField" type="text" name="address1" <?php if(isset($_POST["address1"])){echo "value=\"".$_POST["address1"]."\"";}else{echo "placeholder=\"Street, number...\"";} ?> ><br><br>
