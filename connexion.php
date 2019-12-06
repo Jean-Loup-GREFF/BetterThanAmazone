@@ -208,6 +208,20 @@
 		$response->closeCursor();
 		return $list;
 	}
+	function validateCart($userID)
+	{
+		$cartOrder = array_slice(getCartOrderOfUser($userID), 0, 1);
+		$userInfo = array_slice(getUserById($userID), 0, 1);
+		
+		
+		if(Count($cartOrder) > 0 && Count($userInfo) > 0)
+		{
+			
+			insertToBDD("UPDATE `orders` SET `type`=\"ORDER\",`status`=\"WAIT_FOR_BILL\" WHERE `id`=\"".$cartOrder[0]["id"]."\"");
+			insertToBDD("INSERT INTO `orders` (`user_id`, `type`, `status`, `amount`, `billing_adress_id`, `delivery_adress_id`)"." VALUES (\"".$userID."\", \"CART\", \"CART\", \"0\", \"".$userInfo[0]["billing_adress_id"]."\", \"".$userInfo[0]["delivery_adress_id"]."\")");
+		
+		}
+	}
 
 //	var_dump(getCategoriesChildByCategorieId(2));
 //	var_dump(getCategoriesChildByCategorieName("Main range"));

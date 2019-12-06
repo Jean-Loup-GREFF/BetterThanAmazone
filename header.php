@@ -60,7 +60,7 @@
 		}
 		echo "</ul><div id = \"essai\" align = \"right\">";
 		if($_SESSION["isConnected"] == true){
-			echo "<p id=\"menu_connected\">Vous êtes déjà connecté!\nBonjour, ".$_SESSION["username"]." !</p>";
+			echo "<p id=\"menu_connected\">Vous êtes connecté!\nBonjour, ".$_SESSION["username"]." !</p>";
 			echo "
 			<form method=\"POST\">
 				<input id = \"connection\" type=\"submit\" name=\"isDisconnecting\" value=\"Disconnect\";\">
